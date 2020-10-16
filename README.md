@@ -12,22 +12,13 @@ ALREADY UPLOADED: code for arduinos on body with 5 buzzers and raspberry pi runn
 
 
 /// wanted to give a large variety of code to tinker with
-
 => bluetooth
-
 => spawn executable files
-
 => server-client setup
-
 => send messages
-
 => regEx
-
 => arduino sample code
-
 => PCB layout etc
-
 => more to come!
-
 
 CODE provided is a very simple example using pre-programmed buzzer patterns that can be adapted as you see fit. 
