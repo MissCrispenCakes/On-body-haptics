@@ -1,0 +1,8 @@
+Initializing I2C Mux
+Initializing driver 0
+Initializing driver 1
+Initializing driver 2
+Initializing driver 3
+Initializing driver 4
+Initializing driver 5
+Initializing driver 6
