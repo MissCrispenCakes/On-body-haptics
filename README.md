@@ -7,6 +7,8 @@ multiple renditions of haptics
 ### TO UPDATE HERE:   code for raspberry PI onbody with up to 8 buzzers  
 => need to add/update i^2c + wifi
 
+##UPDATE 2020/2021: I2C and python for v2 octopulse (8 LRAs) added | all materials etc. see: haptics_v2_I2C
+
 ### ALREADY UPLOADED: code for arduinos on body with 5 buzzers and raspberry pi running nodejs server to handle incoming osc to the onbody arduinos
 #### CODE provided is a very simple example using pre-programmed buzzer patterns that can be adapted as you see fit. 
 
@@ -20,3 +22,4 @@ multiple renditions of haptics
 => arduino sample code\
 => PCB layout etc\
 => more to come!
+=> update: I2C, python, WiFi, new design
