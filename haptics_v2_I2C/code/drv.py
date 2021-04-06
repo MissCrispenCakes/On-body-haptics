@@ -19,6 +19,13 @@ __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_DRV2605.git"
 
 
+##
+# EDITED BY github: @MISSCRISPENCAKES
+# FOR LRA CLOSED-LOOP DEFAULT 
+# AUTO-CALIB SETUP
+##
+
+
 # Internal constants:
 _DRV2605_ADDR = const(0x5A)
 _DRV2605_REG_STATUS = const(0x00)
@@ -62,6 +69,7 @@ MODE_AUDIOVIBE = 0x04
 MODE_REALTIME = 0x05
 MODE_DIAGNOS = 0x06
 MODE_AUTOCAL = 0x07
+
 LIBRARY_EMPTY = 0x00
 LIBRARY_TS2200A = 0x01
 LIBRARY_TS2200B = 0x02
@@ -90,74 +98,40 @@ class DRV2605:
         # Configure registers to initialize chip.
         self._write_u8(_DRV2605_REG_MODE, 0x00)  # out of standby
         self._write_u8(_DRV2605_REG_RTPIN, 0x00)  # no real-time-playback
+
         self._write_u8(_DRV2605_REG_WAVESEQ1, 118)  # 1 = strong click 118 = programmatic buzz
         self._write_u8(_DRV2605_REG_WAVESEQ2, 0)
+        self._write_u8(_DRV2605_REG_WAVESEQ3, 0)
+        self._write_u8(_DRV2605_REG_WAVESEQ4, 0)
+        self._write_u8(_DRV2605_REG_WAVESEQ5, 0)
+        self._write_u8(_DRV2605_REG_WAVESEQ6, 0)
+        self._write_u8(_DRV2605_REG_WAVESEQ7, 0)
+        self._write_u8(_DRV2605_REG_WAVESEQ8, 0)
         
-        # overdrive only useful in open-loop mode; LRA run in closed-loop 
-        # self._write_u8(_DRV2605_REG_OVERDRIVE, 1)  # overdrive
-   
-        
-        
+        self._write_u8(_DRV2605_REG_OVERDRIVE, 0) # only useful in open-loop mode, automatic in closed-loop
         self._write_u8(_DRV2605_REG_SUSTAINPOS, 0)
         self._write_u8(_DRV2605_REG_SUSTAINNEG, 0)
         self._write_u8(_DRV2605_REG_BREAK, 0)
-        self._write_u8(_DRV2605_REG_AUDIOMAX, 0x64)
-        
-        
-        #NO # Set ERM open-loop mode.
-        #self.use_ERM()
-        self.use_LRA() # closed-loop LRA by default
-        
-        # are these read or write or both?
-        self._write_u8(_DRV2605_REG_RATEDV, 1) # = const(0x16)
-        self._write_u8(_DRV2605_REG_CLAMPV, 1) # = const(0x17)
-        self._write_u8(_DRV2605_REG_AUTOCALCOMP, 1) # = const(0x18)
-        self._write_u8(_DRV2605_REG_AUTOCALEMP, 1) # = const(0x19)
-        self._write_u8(_DRV2605_REG_FEEDBACK, 1) # = const(0x1A)
-        
-        # real time poll of battery voltage
-        self._write_u8(_DRV2605_REG_VBAT, 1) # = const(0x21)
-        self._write_u8(_DRV2605_REG_LRARESON, 1) # = const(0x22)
 
+        # LRA MODE
+        self.use_LRM()
 
-        # // turn off N_ERM_LRA
-        self._write_u8(_DRV2605_REG_FEEDBACK, self._read_u8(_DRV2605_REG_FEEDBACK) & 0x7F);
-        
-        
-        
-        
-        # NO # turn on ERM_OPEN_LOOP
-        # control3 = self._read_u8(_DRV2605_REG_CONTROL3)
-        # self._write_u8(_DRV2605_REG_CONTROL3, control3 | 0x20)
-        
-        # maybe set LRA DRIVE MODE_INTTRIG
-        control3 = self._read_u8(_DRV2605_REG_CONTROL3)
-        self._write_u8(_DRV2605_REG_CONTROL3, control3 | 0x20)
-        
-        # want LRA closed loop instead
-        # need to auto-control resonant frequency
-        # which one of these if any do we need to turn on?
-        # is the address the same as CONTROL3 0x20?
-        # this is bit 3 yes?
-        #control1 = self._read_u8(_DRV2605_REG_CONTROL1)
-        #self._write_u8(_DRV2605_REG_CONTROL1, control1 | 0x20)
-        #control2 = self._read_u8(_DRV2605_REG_CONTROL2)
-        #self._write_u8(_DRV2605_REG_CONTROL2, control2 | 0x20)
-        #control4 = self._read_u8(_DRV2605_REG_CONTROL4)
-        #self._write_u8(_DRV2605_REG_CONTROL4, control4 | 0x20)
-               
-        
-        
-        # Default to internal trigger mode and TS2200 A library.
+        # AUTO CALIBRATION
+        self.autocal()
+
+        # set default to internal trigger mode and LRA library.
         self.mode = MODE_INTTRIG
-        
-        #NO #self.library = LIBRARY_TS2200A
-        # want LRA Library instead
         self.library = LIBRARY_LRA
+
+        # real time poll of battery voltage (3.7 V Li)
+        # read when active
+        #self._write_u8(_DRV2605_REG_VBAT, 0xA8)
+        
+        # real time poll of LRA period in us (235 Hz => 4255.31915 us)
+        # read when active
+        #self._write_u8(_DRV2605_REG_LRARESON, 0x2B)
         
         self._sequence = _DRV2605_Sequence(self)
-
-
 
 
     def _read_u8(self, address):
@@ -175,6 +149,19 @@ class DRV2605:
             i2c.write(self._BUFFER, end=2)
 
 
+    def autocal(self):
+        self._write_u8(_DRV2605_REG_RATEDV, 0x12) # rated voltage (1.8V) !! CALCULATE ME !!
+        self._write_u8(_DRV2605_REG_CLAMPV, 0x19) # overdrive v (2.5V)  !! CALCULATE ME !!
+
+        control1 = self._read_u8(_DRV2605_REG_CONTROL1)
+        self._write_u8(_DRV2605_REG_CONTROL1, control1 ^ 0x06) # set DRIVE_TIME
+        control3 = self._read_u8(_DRV2605_REG_CONTROL3)
+        self._write_u8(_DRV2605_REG_CONTROL3, control3 ^ 0x24) # set closed-loop; LRA cycle
+
+        self._write_u8(_DRV2605_REG_GO, 0x01)
+        while (self._read_u8(_DRV2605_REG_GO) & 0x01):
+            pass
+        self.diag()
 
 
     def play(self):
@@ -186,7 +173,15 @@ class DRV2605:
         self._write_u8(_DRV2605_REG_GO, 0)
 
 
+    @property
+    def diag(self):
+        """ Check for auto calibration success """
+        return self._read_u8(_DRV2605_REG_STATUS)
 
+    @diag.setter
+    def diag(self, val):
+        if val == 1:
+            raise ValueError("Auto-calibration failed!")
 
     @property
     def mode(self):
@@ -212,7 +207,6 @@ class DRV2605:
         if not 0 <= val <= 7:
             raise ValueError("Mode must be a value within 0-7!")
         self._write_u8(_DRV2605_REG_MODE, val)
-
 
     @property
     def library(self):
@@ -278,7 +272,6 @@ class DRV2605:
         self._write_u8(_DRV2605_REG_FEEDBACK, feedback | 0x80)
 
 
-
 class Effect:
     """DRV2605 waveform sequence effect."""
 
@@ -310,7 +303,6 @@ class Effect:
         return "{}({})".format(type(self).__qualname__, self.id)
 
 
-
 class Pause:
     """DRV2605 waveform sequence timed delay."""
 
@@ -340,7 +332,6 @@ class Pause:
 
     def __repr__(self):
         return "{}({})".format(type(self).__qualname__, self.duration)
-
 
 
 class _DRV2605_Sequence:
