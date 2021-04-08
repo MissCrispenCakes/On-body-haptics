@@ -199,7 +199,7 @@ class DRV2605:
         # control4 = self._read_u8(_DRV2605_REG_CONTROL4)
         # control5 = self._read_u8(_DRV2605_REG_CONTROL5)
 
-        self._write_u8(_DRV2605_REG_CONTROL2, 0xF5)#01110101 closed loop unidirectional
+        self._write_u8(_DRV2605_REG_CONTROL2, 0x75)#01110101 closed loop unidirectional
         # set default to internal trigger mode and LRA library.
         self._write_u8(_DRV2605_REG_MODE, 0x40) #put into STANDBY
         # self.mode = MODE_INTTRIG
