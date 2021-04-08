@@ -79,6 +79,7 @@ _DRV2605_REG_STATUS = const(0x00)
 _DRV2605_REG_MODE = const(0x01)
 
 _DRV2605_REG_RTPIN = const(0x02)
+
 _DRV2605_REG_LIBRARY = const(0x03)
 _DRV2605_REG_WAVESEQ1 = const(0x04)
 _DRV2605_REG_WAVESEQ2 = const(0x05)
@@ -90,26 +91,31 @@ _DRV2605_REG_WAVESEQ7 = const(0x0A)
 _DRV2605_REG_WAVESEQ8 = const(0x0B)
 
 _DRV2605_REG_GO = const(0x0C)
+
 _DRV2605_REG_OVERDRIVE = const(0x0D)
 _DRV2605_REG_SUSTAINPOS = const(0x0E)
 _DRV2605_REG_SUSTAINNEG = const(0x0F)
 _DRV2605_REG_BREAK = const(0x10)
+
 _DRV2605_REG_AUDIOCTRL = const(0x11)
 _DRV2605_REG_AUDIOMINLV = const(0x12)
 _DRV2605_REG_AUDIOMAXLV = const(0x13)
 _DRV2605_REG_AUDIOMINDR = const(0x14)
 _DRV2605_REG_AUDIOMAXDR = const(0x15)
+
 _DRV2605_REG_RATEDV = const(0x16)
 _DRV2605_REG_CLAMPV = const(0x17)
 _DRV2605_REG_AUTOCALCOMP = const(0x18)
 _DRV2605_REG_AUTOCALEMP = const(0x19)
+
 _DRV2605_REG_FEEDBACK = const(0x1A)
 _DRV2605_REG_CONTROL1 = const(0x1B)
 _DRV2605_REG_CONTROL2 = const(0x1C)
 _DRV2605_REG_CONTROL3 = const(0x1D)
 _DRV2605_REG_CONTROL4 = const(0x1E)
-_DRV2605_REG_RFU1 = const(0x1F)
-_DRV2605_REG_RFU2 = const(0x20)
+_DRV2605_REG_CONTROL5 = const(0x1F)
+
+_DRV2605_REG_LRAOPEN = const(0x20)
 _DRV2605_REG_VBAT = const(0x21)
 _DRV2605_REG_LRARESON = const(0x22)
 
@@ -122,6 +128,7 @@ MODE_AUDIOVIBE = 0x04
 MODE_REALTIME = 0x05
 MODE_DIAGNOS = 0x06
 MODE_AUTOCAL = 0x07
+
 MODE_STANDBY = 0x40
 
 LIBRARY_EMPTY = 0x00
@@ -178,19 +185,24 @@ class DRV2605:
         self.log(loc)
         self.check(loc)
 
-        # LRA MODE
-        self.use_LRM()
-        self.library = LIBRARY_LRA
-
+        #AUTO_CAL
         #self._write_u8(_DRV2605_REG_MODE, 0x07)
         self.autocal()
-        #self._write_u8(_DRV2605_REG_MODE, 0x07)
-        #self.autocal()
-        #self._write_u8(_DRV2605_REG_MODE, 0x07)
-        #self.autocal()
 
+        # LRA MODE
+        self.use_LRA()
+        self.library = LIBRARY_LRA
+
+        # control1 = self._read_u8(_DRV2605_REG_CONTROL1)
+        # control2 = self._read_u8(_DRV2605_REG_CONTROL2)
+        # control3 = self._read_u8(_DRV2605_REG_CONTROL3)
+        # control4 = self._read_u8(_DRV2605_REG_CONTROL4)
+        # control5 = self._read_u8(_DRV2605_REG_CONTROL5)
+
+        self._write_u8(_DRV2605_REG_CONTROL2, 0xF5)#01110101 closed loop unidirectional
         # set default to internal trigger mode and LRA library.
-        self.mode = MODE_INTTRIG
+        self._write_u8(_DRV2605_REG_MODE, 0x40) #put into STANDBY
+        # self.mode = MODE_INTTRIG
         # self.library = LIBRARY_LRA
         
         self._sequence = _DRV2605_Sequence(self)
@@ -212,50 +224,63 @@ class DRV2605:
 
     def check(self, loc):
         mylogs.info("_{}_".format(loc))
-        mylogs.debug("RATED: {}".format(self._read_u8(_DRV2605_REG_RATEDV)))
-        mylogs.debug("CLAMP: {}".format(self._read_u8(_DRV2605_REG_CLAMPV)))        
-        mylogs.debug("VABTT: {}".format(self._read_u8(_DRV2605_REG_VBAT)))
-        mylogs.debug("RFREQ: {}".format(self._read_u8(_DRV2605_REG_LRARESON)))
+        # mylogs.debug("RATED: {}".format(self._read_u8(_DRV2605_REG_RATEDV)*0.02558))
+        # mylogs.debug("CLAMP: {}".format(self._read_u8(_DRV2605_REG_CLAMPV)*0.02122))        
+        mylogs.debug("VABTT: {}".format(self._read_u8(_DRV2605_REG_VBAT)*0.02196))
+        mylogs.debug("RFREQ: {}".format(1/(self._read_u8(_DRV2605_REG_LRARESON)*0.09846)))
 
     def log(self, loc):
         control1 = self._read_u8(_DRV2605_REG_CONTROL1)
         control2 = self._read_u8(_DRV2605_REG_CONTROL2)
         control3 = self._read_u8(_DRV2605_REG_CONTROL3)
         control4 = self._read_u8(_DRV2605_REG_CONTROL4)
-        mylogs.info('_{}_\ncontrol1: {}\ncontrol2: {}\ncontrol3: {}\ncontrol4: {}'.format(loc,control1,control2,control3,control4))
+        control5 = self._read_u8(_DRV2605_REG_CONTROL5)        
+        mylogs.info('_{}_\ncontrol1: {}\ncontrol2: {}\ncontrol3: {}\ncontrol4: {}\ncontrol5: {}'.format(loc,control1,control2,control3,control4,control5))
 
     def autocal(self):
         self.mode = MODE_AUTOCAL
-        self._write_u8(_DRV2605_REG_FEEDBACK, 0xAA)
-        self._write_u8(_DRV2605_REG_RATEDV, 0x90)#0x83)#0x46)#0xB4)#0x12)#0x20) #0x12) # rated voltage (1.8V) !! CALCULATE ME !!
-        self._write_u8(_DRV2605_REG_CLAMPV, 0x96)#0x57)#0xFA)#0x19)#0x23) #0x19)# overdrive v (2.5V)  !! CALCULATE ME !!
+        self.use_LRA()
+        #self._write_u8(_DRV2605_REG_FEEDBACK, 0xAA)
+        self._write_u8(_DRV2605_REG_RATEDV, 0x8C)#0x90)#0x83)#0x46)#0xB4)#0x12)#0x20) #0x12) # rated voltage (1.8V) !! CALCULATE ME !!
+        self._write_u8(_DRV2605_REG_CLAMPV, 0XAA) #0x96)#0x57)#0xFA)#0x19)#0x23) #0x19)# overdrive v (2.5V)  !! CALCULATE ME !!
+        mylogs.debug("RATED: {}".format(self._read_u8(_DRV2605_REG_RATEDV)*0.02558))
+        mylogs.debug("CLAMP: {}".format(self._read_u8(_DRV2605_REG_CLAMPV)*0.02122))
 
-        loc = 'auto'
-        self.log(loc)
-
-        control1 = self._read_u8(_DRV2605_REG_CONTROL1)
-        control2 = self._read_u8(_DRV2605_REG_CONTROL2)
-        control3 = self._read_u8(_DRV2605_REG_CONTROL3)
-        control4 = self._read_u8(_DRV2605_REG_CONTROL4)
+        # control1 = self._read_u8(_DRV2605_REG_CONTROL1) #DRIVE_TIME: 21 = 0x15 = 100 10101
+        # control2 = self._read_u8(_DRV2605_REG_CONTROL2)
+        # control3 = self._read_u8(_DRV2605_REG_CONTROL3)
+        # control4 = self._read_u8(_DRV2605_REG_CONTROL4)
+        # control5 = self._read_u8(_DRV2605_REG_CONTROL5)
 
         #self._write_u8(_DRV2605_REG_CONTROL1, control1 ^ 0x06) #10010011 1001 0101 1001 0011
         #self._write_u8(_DRV2605_REG_CONTROL2, control2 & 0x75) #01100101 101
         #self._write_u8(_DRV2605_REG_CONTROL3, control3 ^ 0x28) #10101100 172 
         #self._write_u8(_DRV2605_REG_CONTROL4, control4 | 0x00) #
 
-        self._write_u8(_DRV2605_REG_CONTROL1, 0x90)
-        self._write_u8(_DRV2605_REG_CONTROL2, 0xF5)
-        self._write_u8(_DRV2605_REG_CONTROL3, 0x20)
-        self._write_u8(_DRV2605_REG_CONTROL4, 0x30)
-        loc = 'control'
-        self.log(loc)
-
+        self._write_u8(_DRV2605_REG_CONTROL1, 0x95)#0x90) 100 10101 DRIVE_TIME 2.1
+        self._write_u8(_DRV2605_REG_CONTROL2, 0x00)#0xF5)#01110101 closed loop unidirectional
+        #self._write_u8(_DRV2605_REG_CONTROL3, 0x20)
+        #self._write_u8(_DRV2605_REG_CONTROL4, 0x30)
+        #self._write_u8(_DRV2605_REG_CONTROL5, 0x30)
+        
         #self._write_u8(_DRV2605_REG_MODE, 0x07)
-        self._write_u8(_DRV2605_REG_GO, 0x01)
+        #elf._write_u8(_DRV2605_REG_GO, 0x01)
+        self.play()
+
+        loc = 'auto'
+        self.log(loc)
         self.check(loc)
+        
+        i = 0
         while (self._read_u8(_DRV2605_REG_GO) & 0x01):
-            pass
-        self._write_u8(_DRV2605_REG_GO, 0x00)
+            self._read_u8(_DRV2605_REG_GO)
+            if i==0:   
+                mylogs.info("Not finished...")
+                i = 1
+        mylogs.info("GO REG: {}".format(self._read_u8(_DRV2605_REG_GO)))
+        i = 0    
+        #self._write_u8(_DRV2605_REG_GO, 0x00)
+        #self.stop()
         self.diag()
 
 
@@ -275,7 +300,7 @@ class DRV2605:
             raise ValueError("Auto-calibration failed!")
         else:
             mylogs.info("Auto-calibration success!")
-            self.mode = MODE_INTTRIG
+            #self.mode = MODE_INTTRIG
             #self.library = LIBRARY_LRA
 
     @property
@@ -365,7 +390,7 @@ class DRV2605:
         self._write_u8(_DRV2605_REG_FEEDBACK, feedback & 0x7F)
 
     # pylint: disable=invalid-name
-    def use_LRM(self):
+    def use_LRA(self):
         """Use a linear resonance actuator motor."""
         feedback = self._read_u8(_DRV2605_REG_FEEDBACK)
         self._write_u8(_DRV2605_REG_FEEDBACK, feedback | 0x80)

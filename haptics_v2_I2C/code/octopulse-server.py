@@ -99,16 +99,15 @@ class I2CThread(threading.Thread):
         for i in range(8):
             print('I2CThread: Initializing driver {}'.format(i))
             self.drv.append(adafruit_drv2605.DRV2605(self.tca[i]))
-            #self.drv[i].use_LRM() #adafruit-DRV
-            print('DRV2605: Auto-Calibrating driver {}'.format(i))
+            #self.drv[i].use_LRA() #adafruit-DRV
+            #print('DRV2605: Auto-Calibrating driver {}'.format(i))
             #self.drv[i].mode = 7 #MODE_AUTOCAL
-            self.drv[i].autocal()
-            print('DRV2605: Auto-Calibrating driver {}'.format(i))
-            self.drv[i].autocal()
+            #self.drv[i].autocal()
+            #print('2x auto-cal driver {}'.format(i))
+            #self.drv[i].autocal()
             print('DRV2605: driver {} ready for use'.format(i))
-            #self.drv[i].mode = 1 #MODE_INTTRIG
-            #self.drv[i].library = 6 #LIBRARY_LRA
-        
+            self.drv[i].mode = 1 #MODE_INTTRIG
+            self.drv[i].library = 6 #LIBRARY_LRA        
         return
         
     def stop(self, *args, **kwargs):
@@ -127,15 +126,22 @@ class I2CThread(threading.Thread):
                 if item['start'] == 1:
                     if (b < 8):
                         self.drv[b].sequence[0] = adafruit_drv2605.Effect(item['pattern']) #adafruit-DRV
-                        #self.drv[b].sequence[1] = adafruit_drv2605.Effect(47) #adafruit-DRV
-                        #self.drv[b].sequence[2] = adafruit_drv2605.Effect(48) #adafruit-DRV
-                        #self.drv[b].sequence[3] = adafruit_drv2605.Effect(49) #adafruit-DRV
-                        #self.drv[b].sequence[4] = adafruit_drv2605.Effect(50) #adafruit-DRV
-                        #self.drv[b].sequence[5] = adafruit_drv2605.Effect(51) #adafruit-DRV
-                        self.drv[b].sequence[6] = adafruit_drv2605.Pause(item['duration']) #adafruit-DRV
+                        #self.drv[b].sequence[1] = adafruit_drv2605.Pause(item['duration']) #adafruit-DRV                        self.drv[b].sequence[1] = adafruit_drv2605.Effect(47) #adafruit-DRV
+
+                        #self.drv[b].sequence[1] = adafruit_drv2605.Effect(118) #adafruit-DRV
+                        #self.drv[b].sequence[3] = adafruit_drv2605.Pause(item['duration']) #adafruit-DRV
+
+                        #self.drv[b].sequence[2] = adafruit_drv2605.Effect(118) #adafruit-DRV
+                        #self.drv[b].sequence[5] = adafruit_drv2605.Pause(item['duration']) #adafruit-DRV
+
+                        #self.drv[b].sequence[6] = adafruit_drv2605.Effect(51) #adafruit-DRV
+                        self.drv[b].sequence[1] = adafruit_drv2605.Pause(item['duration']) #adafruit-DRV
                         self.drv[b].play() #adafruit-DRV
+                        check = 'server'
+                        self.drv[b].check(check)
+                        self.drv[b].log(check)
                         # time.sleep(0.2) # item['duration']) # variable to adjust timing if required
-                        t = threading.Timer(6*item['duration'], stop_buzzer, [b], {})
+                        t = threading.Timer(item['duration'], stop_buzzer, [b], {})
                         #t = threading.Timer(item['duration'], stop_buzzer, [l], [b], {})
                         t.start()
                 else:
