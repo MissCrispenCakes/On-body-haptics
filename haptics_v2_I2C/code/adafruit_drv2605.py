@@ -23,6 +23,9 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_DRV2605.git"
 # EDITED BY github: @MISSCRISPENCAKES
 # FOR LRA CLOSED-LOOP DEFAULT 
 # AUTO-CALIB SETUP
+# and customised for octopulse 8-motor haptic belts with logging info
+# TO USE FOR LOGGING / TESTING PURPOSES: select a different port in and then run octopulse-server.py code
+#                                        either use this file in the octopulse-server.py imports or replace the default file
 ##
 
 import coloredlogs, logging
@@ -42,6 +45,8 @@ levelstyles = {'critical': {'bold': True, 'color': 'red'},
                'info': {'color':'magenta'},
                'warning': {'color': 'yellow'}}
 
+
+## included logging and debugging options 
 # Handler - 1
 file = logging.FileHandler("Sample.log")
 fileformat = logging.Formatter("%(asctime)s [%(levelname)s] - [%(filename)s > %(funcName)s() > %(lineno)s] - %(message)s")#%(asctime)s:%(levelname)s:%(message)s")
@@ -106,7 +111,7 @@ _DRV2605_REG_AUDIOMAXDR = const(0x15)
 _DRV2605_REG_RATEDV = const(0x16)
 _DRV2605_REG_CLAMPV = const(0x17)
 _DRV2605_REG_AUTOCALCOMP = const(0x18)
-_DRV2605_REG_AUTOCALEMP = const(0x19)
+_DRV2605_REG_AUTOCALEMF = const(0x19)
 
 _DRV2605_REG_FEEDBACK = const(0x1A)
 _DRV2605_REG_CONTROL1 = const(0x1B)
@@ -164,34 +169,39 @@ class DRV2605:
 
         self._write_u8(_DRV2605_REG_WAVESEQ1, 1)  # 1 = strong click 118 = programmatic buzz
         self._write_u8(_DRV2605_REG_WAVESEQ2, 0)
-        self._write_u8(_DRV2605_REG_WAVESEQ3, 0)
-        self._write_u8(_DRV2605_REG_WAVESEQ4, 0)
-        self._write_u8(_DRV2605_REG_WAVESEQ5, 0)
-        self._write_u8(_DRV2605_REG_WAVESEQ6, 0)
-        self._write_u8(_DRV2605_REG_WAVESEQ7, 0)
-        self._write_u8(_DRV2605_REG_WAVESEQ8, 0)
+        #self._write_u8(_DRV2605_REG_WAVESEQ3, 0)
+        #self._write_u8(_DRV2605_REG_WAVESEQ4, 0)
+        #self._write_u8(_DRV2605_REG_WAVESEQ5, 0)
+        #self._write_u8(_DRV2605_REG_WAVESEQ6, 0)
+        #self._write_u8(_DRV2605_REG_WAVESEQ7, 0)
+        #self._write_u8(_DRV2605_REG_WAVESEQ8, 0)
         
         self._write_u8(_DRV2605_REG_OVERDRIVE, 0) # only useful in open-loop mode, automatic in closed-loop
         self._write_u8(_DRV2605_REG_SUSTAINPOS, 0)
         self._write_u8(_DRV2605_REG_SUSTAINNEG, 0)
         self._write_u8(_DRV2605_REG_BREAK, 0)
         self._write_u8(_DRV2605_REG_AUDIOCTRL, 0x00)
-        self._write_u8(_DRV2605_REG_AUDIOMINLV, 0x00)
-        self._write_u8(_DRV2605_REG_AUDIOMAXLV, 0x00)
-        self._write_u8(_DRV2605_REG_AUDIOMINDR, 0x00)
-        self._write_u8(_DRV2605_REG_AUDIOMAXDR, 0x00)
+        self._write_u8(_DRV2605_REG_AUDIOMINLV, 0x19)
+        self._write_u8(_DRV2605_REG_AUDIOMAXLV, 0xFF)
+        self._write_u8(_DRV2605_REG_AUDIOMINDR, 0x19)
+        self._write_u8(_DRV2605_REG_AUDIOMAXDR, 0xFF)
 
         loc = 'init'
         self.log(loc)
         self.check(loc)
 
-        #AUTO_CAL
+        # AUTO_CAL
         #self._write_u8(_DRV2605_REG_MODE, 0x07)
-        self.autocal()
-
         # LRA MODE
         self.use_LRA()
+        self.autocal()
+        self.diag()
         self.library = LIBRARY_LRA
+        # turn on LRA_CLOSED_LOOP
+        control3 = self._read_u8(_DRV2605_REG_CONTROL3)
+        self._write_u8(_DRV2605_REG_CONTROL3, control3 & 0xDF)
+        # Default to internal trigger mode and TS2200 A library.
+        # self.mode = MODE_INTTRIG        
 
         # control1 = self._read_u8(_DRV2605_REG_CONTROL1)
         # control2 = self._read_u8(_DRV2605_REG_CONTROL2)
@@ -199,11 +209,11 @@ class DRV2605:
         # control4 = self._read_u8(_DRV2605_REG_CONTROL4)
         # control5 = self._read_u8(_DRV2605_REG_CONTROL5)
 
-        self._write_u8(_DRV2605_REG_CONTROL2, 0x75)#01110101 closed loop unidirectional
+        #self._write_u8(_DRV2605_REG_CONTROL2, 0x75)#01110101 closed loop unidirectional
         # set default to internal trigger mode and LRA library.
-        self._write_u8(_DRV2605_REG_MODE, 0x40) #put into STANDBY
-        # self.mode = MODE_INTTRIG
-        # self.library = LIBRARY_LRA
+        #self._write_u8(_DRV2605_REG_MODE, self._read_u8(_DRV2605_REG_MODE) | 0x40) #put into STANDBY
+        self.mode = MODE_INTTRIG
+        self.library = LIBRARY_LRA
         
         self._sequence = _DRV2605_Sequence(self)
 
@@ -224,10 +234,10 @@ class DRV2605:
 
     def check(self, loc):
         mylogs.info("_{}_".format(loc))
-        # mylogs.debug("RATED: {}".format(self._read_u8(_DRV2605_REG_RATEDV)*0.02558))
-        # mylogs.debug("CLAMP: {}".format(self._read_u8(_DRV2605_REG_CLAMPV)*0.02122))        
-        mylogs.debug("VABTT: {}".format(self._read_u8(_DRV2605_REG_VBAT)*0.02196))
-        mylogs.debug("RFREQ: {}".format(1/(self._read_u8(_DRV2605_REG_LRARESON)*0.09846)))
+        mylogs.debug("RATED: {}".format(self._read_u8(_DRV2605_REG_RATEDV)*0.02558)) # USING DRV2605L FORMULA to output in human readable
+        mylogs.debug("CLAMP: {}".format(self._read_u8(_DRV2605_REG_CLAMPV)*0.02122)) # USING DRV2605L FORMULA to output in human readable      
+        mylogs.debug("VABTT: {}".format(self._read_u8(_DRV2605_REG_VBAT)*0.02196)) # USING DRV2605L FORMULA to output in human readable
+        mylogs.debug("RFREQ: {}".format(1/(self._read_u8(_DRV2605_REG_LRARESON)*0.00009846))) # USING DRV2605L FORMULA to output in human readable
 
     def log(self, loc):
         control1 = self._read_u8(_DRV2605_REG_CONTROL1)
@@ -240,48 +250,45 @@ class DRV2605:
     def autocal(self):
         self.mode = MODE_AUTOCAL
         self.use_LRA()
+        # EXAMPLES OF WAYS TO ADJUST THE DRV VALUES: 
         #self._write_u8(_DRV2605_REG_FEEDBACK, 0xAA)
-        self._write_u8(_DRV2605_REG_RATEDV, 0x8C)#0x90)#0x83)#0x46)#0xB4)#0x12)#0x20) #0x12) # rated voltage (1.8V) !! CALCULATE ME !!
-        self._write_u8(_DRV2605_REG_CLAMPV, 0XAA) #0x96)#0x57)#0xFA)#0x19)#0x23) #0x19)# overdrive v (2.5V)  !! CALCULATE ME !!
-        mylogs.debug("RATED: {}".format(self._read_u8(_DRV2605_REG_RATEDV)*0.02558))
-        mylogs.debug("CLAMP: {}".format(self._read_u8(_DRV2605_REG_CLAMPV)*0.02122))
+        self._write_u8(_DRV2605_REG_RATEDV, 0x47) #0x8C)#0x90)#0x83)#0x46)#0xB4)#0x12)#0x20) #0x12) # rated voltage (1.8V) !! CALCULATE ME !!
+        self._write_u8(_DRV2605_REG_CLAMPV, 0x8C) #0XAA) #0x96)#0x57)#0xFA)#0x19)#0x23) #0x19)# overdrive v (2.5V)  !! CALCULATE ME !!
+        mylogs.debug("RATED: {}".format(self._read_u8(_DRV2605_REG_RATEDV)*0.02558)) # USING DRV2605L FORMULA to output in human readable
+        mylogs.debug("CLAMP: {}".format(self._read_u8(_DRV2605_REG_CLAMPV)*0.02122)) # USING DRV2605L FORMULA to output in human readable
 
-        # control1 = self._read_u8(_DRV2605_REG_CONTROL1) #DRIVE_TIME: 21 = 0x15 = 100 10101
-        # control2 = self._read_u8(_DRV2605_REG_CONTROL2)
+        control1 = self._read_u8(_DRV2605_REG_CONTROL1) #DRIVE_TIME: 21 = 0x15 = 100 10101
+        control2 = self._read_u8(_DRV2605_REG_CONTROL2)
         # control3 = self._read_u8(_DRV2605_REG_CONTROL3)
         # control4 = self._read_u8(_DRV2605_REG_CONTROL4)
         # control5 = self._read_u8(_DRV2605_REG_CONTROL5)
 
-        #self._write_u8(_DRV2605_REG_CONTROL1, control1 ^ 0x06) #10010011 1001 0101 1001 0011
-        #self._write_u8(_DRV2605_REG_CONTROL2, control2 & 0x75) #01100101 101
-        #self._write_u8(_DRV2605_REG_CONTROL3, control3 ^ 0x28) #10101100 172 
-        #self._write_u8(_DRV2605_REG_CONTROL4, control4 | 0x00) #
-
-        self._write_u8(_DRV2605_REG_CONTROL1, 0x95)#0x90) 100 10101 DRIVE_TIME 2.1
-        self._write_u8(_DRV2605_REG_CONTROL2, 0x00)#0xF5)#01110101 closed loop unidirectional
+        self._write_u8(_DRV2605_REG_CONTROL1, control1 | 0x10) #0x95)#0x90) 100 10101 DRIVE_TIME 2.1
+        self._write_u8(_DRV2605_REG_CONTROL2, control2 & 0x00) # closed loop unidirectional
         #self._write_u8(_DRV2605_REG_CONTROL3, 0x20)
-        #self._write_u8(_DRV2605_REG_CONTROL4, 0x30)
+        #self._write_u8(_DRV2605_REG_CONTROL4, 0x30) # Don't use me
         #self._write_u8(_DRV2605_REG_CONTROL5, 0x30)
         
         #self._write_u8(_DRV2605_REG_MODE, 0x07)
-        #elf._write_u8(_DRV2605_REG_GO, 0x01)
-        self.play()
+        self._write_u8(_DRV2605_REG_GO, 1) #self._read_u8(_DRV2605_REG_GO) | 0x01)
+        #self.play()
 
         loc = 'auto'
         self.log(loc)
         self.check(loc)
         
         i = 0
+        mylogs.info("1 GO REG: {}".format(self._read_u8(_DRV2605_REG_GO)))
         while (self._read_u8(_DRV2605_REG_GO) & 0x01):
             self._read_u8(_DRV2605_REG_GO)
             if i==0:   
                 mylogs.info("Not finished...")
                 i = 1
-        mylogs.info("GO REG: {}".format(self._read_u8(_DRV2605_REG_GO)))
+        mylogs.info("2 GO REG: {}".format(self._read_u8(_DRV2605_REG_GO)))
         i = 0    
         #self._write_u8(_DRV2605_REG_GO, 0x00)
         #self.stop()
-        self.diag()
+        #self.diag()
 
 
     def play(self):
@@ -295,13 +302,13 @@ class DRV2605:
     def diag(self):
         """Check for auto calibration success"""
         diag = self._read_u8(_DRV2605_REG_STATUS)
-        if (diag & 0x04):
+        if (diag & 0x08):
             mylogs.error("Auto-calibration failed!")
             raise ValueError("Auto-calibration failed!")
         else:
             mylogs.info("Auto-calibration success!")
-            #self.mode = MODE_INTTRIG
-            #self.library = LIBRARY_LRA
+            self.mode = MODE_INTTRIG
+            self.library = LIBRARY_LRA #use an ERM Library if using ERM
 
     @property
     def mode(self):
@@ -341,7 +348,7 @@ class DRV2605:
         - LIBRARY_TS2200C: TS2200 library C
         - LIBRARY_TS2200D: TS2200 library D
         - LIBRARY_TS2200E: TS2200 library E
-        - LIBRARY_LRA: LRA library
+        - LIBRARY_LRA: LRA library (CURRENTLY SET TO FOR OCTOPULSE LRAs)
 
         See the datasheet for the meaning and description of effects in each
         library.
