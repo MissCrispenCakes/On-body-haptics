@@ -60,13 +60,13 @@ that runs on the PIs
 *******************
 
 files of interest:
-octopulse-client.py - this is a sample code to test sending to haptic belts
-octopulse-server.py - this is running on the PIs (auto starts after wifi is configured)
-					- you can run a testing version of this if you change port access in the code and rerun
-					- both are located: ~/On-body-haptics/haptics_v2_I2C/code/
-adafruit_drv2605.py &| adafruit_drv2605_LOG.py - default and customised versions of the DRV code used to control 													 characteristics
-											   - located: ~/.local/lib/python3.7/site-packages/
-octopulse-server.service & ip-display.service  - these files are run during PI startup and activate the auto-run
+octopulse-client.py	- this is a sample code to test sending to haptic belts
+octopulse-server.py	- this is running on the PIs (auto starts after wifi is configured)
+				- you can run a testing version of this if you change port access in the code and rerun
+				- both are located: ~/On-body-haptics/haptics_v2_I2C/code/
+adafruit_drv2605.py &| adafruit_drv2605_LOG.py 	- default and customised versions of the DRV code used to control characteristics
+						- located: ~/.local/lib/python3.7/site-packages/
+octopulse-server.service & ip-display.service  	- these files are run during PI startup and activate the auto-run
 
 other files in /code/ are either simple default versions of above code samples, testing versions or basic setup
 
