@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Haptiics context</title>
+  <script type="module" src="https://unpkg.com/pdfjs-dist/" async></script>
+  <title>Haptics context</title>
 </head>
 <body>
 
@@ -10,20 +11,20 @@
 
 <canvas id="the-canvas" style="border: 1px solid black; direction: ltr;"></canvas>
 
-<script src="https://unpkg.com/browse/pdfjs-dist@3.6.172/build/pdf.js"></script>
+<!-- <script src="pdf.js"></script> -->
 
 <script id="script">
   //
   // If absolute URL from the remote server is provided, configure the CORS
   // header on that server.
   //
-  const url = './_excerpttactile.pdf';
+  const url = './_excerpttactile.pdf ';
 
   //
   // The workerSrc property shall be specified.
   //
   pdfjsLib.GlobalWorkerOptions.workerSrc =
-    'https://unpkg.com/browse/pdfjs-dist@3.6.172/build/pdf.worker.js';
+    'pdf.worker.js';
 
   //
   // Asynchronous download PDF
@@ -67,12 +68,12 @@
   })();
 </script>
 
-<hr>
+<!-- <hr>
 <h2>JavaScript code:</h2>
 <pre id="code"></pre>
 <script>
-  document.getElementById('code').textContent =
-      document.getElementById('script').text;
-</script>
+  document.getElementById('code').textContent = 
+    document.getElementById('script').text;
+</script> -->
 </body>
 </html>
