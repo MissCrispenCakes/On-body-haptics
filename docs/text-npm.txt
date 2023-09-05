@@ -1,0 +1,27 @@
+npm
+v0.3.29
+Microsoft
+microsoft.com
+6,274,501
+(22)
+npm support for VS Code
+Disable
+Uninstall
+ This extension is deprecated as it is no longer being maintained.
+
+Categories
+Other
+Extension Resources
+Marketplace
+Repository
+License
+Microsoft
+More Info
+Published
+11/17/2015, 09:49:02
+Last released
+10/4/2022, 06:55:20
+Last updated
+10/24/2022, 07:31:58
+Identifier
+eg2.vscode-npm-script
