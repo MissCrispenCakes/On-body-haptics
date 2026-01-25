@@ -5,13 +5,21 @@ Manages SSD1306 OLED display for showing IP address and system status.
 Displays information when button is pressed.
 """
 
-import board
-import digitalio
-import busio
 import threading
 import netifaces
-import adafruit_ssd1306
 from typing import Optional
+
+try:
+    import board
+    import digitalio
+    import busio
+    import adafruit_ssd1306
+except ImportError:
+    # Hardware modules not available (e.g., in CI environment)
+    board = None
+    digitalio = None
+    busio = None
+    adafruit_ssd1306 = None
 
 
 class OLEDDisplay(threading.Thread):

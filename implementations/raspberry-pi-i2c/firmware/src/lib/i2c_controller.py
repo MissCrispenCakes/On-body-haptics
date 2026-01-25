@@ -6,13 +6,21 @@ Runs in a separate thread to handle haptic effects asynchronously.
 """
 
 import time
-import board
-import busio
 import threading
 import queue
-import adafruit_drv2605
-import adafruit_tca9548a
 from typing import Dict, Optional
+
+try:
+    import board
+    import busio
+    import adafruit_drv2605
+    import adafruit_tca9548a
+except ImportError:
+    # Hardware modules not available (e.g., in CI environment)
+    board = None
+    busio = None
+    adafruit_drv2605 = None
+    adafruit_tca9548a = None
 
 
 class I2CHapticController(threading.Thread):

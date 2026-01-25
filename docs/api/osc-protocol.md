@@ -394,4 +394,4 @@ Planned for future versions:
 
 ## Support
 
-Questions about the OSC protocol? Ask in [GitHub Discussions](https://github.com/yourusername/On-body-haptics/discussions).
+Questions about the OSC protocol? Ask in [GitHub Discussions](https://github.com/MissCrispenCakes/On-body-haptics/discussions).
