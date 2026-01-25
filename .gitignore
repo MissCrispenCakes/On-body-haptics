@@ -172,3 +172,4 @@ test-results/
 # Exceptions for hardware files
 !hardware/**/gerbers/*.zip
 !hardware/**/*.tar.gz
+/.claude
