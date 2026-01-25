@@ -4,6 +4,8 @@ All hardware in this directory is licensed under **CERN-OHL-P v2** (CERN Open Ha
 
 See [LICENSE-HARDWARE](../LICENSE-HARDWARE) for full license text.
 
+**OSHWA Certified Ready**: This hardware uses an [OSHWA-approved license](https://oshwa.org/) and meets all requirements for Open Source Hardware certification. See [OSHWA Certification Guide](../docs/OSHWA_CERTIFICATION.md) for details.
+
 ## Contents
 
 ### PCB Designs (`pcb/`)
@@ -75,13 +77,19 @@ If you manufacture hardware based on these designs, you must maintain this sourc
 
 ## Attribution
 
-Hardware designs by **MissCrispenCakes**
+**Hardware Designers:**
+- **Initial design & prototypes**: MissCrispenCakes
+- **Production PCB files & Gerbers**: rglenn ([@rglenn](https://github.com/rglenn))
+- **3D enclosures**: MissCrispenCakes (initial designs), rglenn (sample prints with battery compartment)
 
 When sharing or manufacturing these designs, please include:
 ```
-Based on On-Body Haptics by MissCrispenCakes
+Based on On-Body Haptics by MissCrispenCakes & rglenn
 https://github.com/MissCrispenCakes/On-body-haptics
 Licensed under CERN-OHL-P v2
+
+Production PCB designs by rglenn
+Initial hardware design by MissCrispenCakes
 ```
 
 ## Questions?

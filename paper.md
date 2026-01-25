@@ -17,9 +17,14 @@ authors:
     orcid: 0000-0000-0000-0000
     corresponding: true
     affiliation: 1
+  - name: rglenn
+    orcid: 0000-0000-0000-0000
+    affiliation: 2
 affiliations:
  - name: Independent Researcher, USA
    index: 1
+ - name: Independent Researcher, USA
+   index: 2
 date: 25 January 2024
 bibliography: paper.bib
 ---
@@ -118,6 +123,6 @@ Community contributions are welcomed through the project's GitHub repository.
 
 # Acknowledgments
 
-This project builds upon the Adafruit DRV2605L CircuitPython library and the broader open-source hardware and software communities. Thanks to early testers and users who provided valuable feedback during development.
+This project builds upon the Adafruit DRV2605L CircuitPython library and the broader open-source hardware and software communities. Special thanks to rglenn for developing the production-ready PCB designs, generating manufacturing-ready Gerber files, creating 3D printed enclosure samples with battery compartments, implementing the I2C system code for hardware testing, and providing expert assembly and soldering work for prototype validation. Thanks to early testers and users who provided valuable feedback during development.
 
 # References

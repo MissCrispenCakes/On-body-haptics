@@ -3,24 +3,33 @@
 ## Project Lead & Creator
 
 **MissCrispenCakes** ([@MissCrispenCakes](https://github.com/MissCrispenCakes))
-- Project conception and design
-- Hardware design (PCBs, enclosures)
+- Project conception and system architecture
+- Initial hardware design and prototype development
+- Test PCB design and assembly
 - Arduino + Bluetooth implementation
-- Raspberry Pi + I2C implementation
+- Initial Raspberry Pi implementation
+- 3D enclosure design
 - Documentation and tutorials
 - Repository maintenance
 
-## Contributors
+## Core Contributors
 
-This project welcomes contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+### Hardware Engineering
+
+**rglenn** ([@rglenn](https://github.com/rglenn))
+- **Production PCB designs** - Professional KiCad layouts for manufacturing
+- **Gerber file generation** - Ready-to-fabricate PCB files
+- **3D printed enclosure samples** - Battery-compatible enclosure prototypes (a delightful surprise!)
+- **I2C system implementation** - Ported initial system to I2C architecture for PCB testing
+- **Hardware testing and validation**
+- **Precision assembly work** - Expert soldering for prototype testing (because steady hands and good eyeballs are underrated superpowers when dealing with 0402 components and microscopic traces!)
 
 ### Code Contributors
 
-(Contributors will be listed here as they make contributions)
+**rglenn** ([@rglenn](https://github.com/rglenn))
+- I2C code implementation and testing for hardware validation
 
-### Hardware Contributors
-
-(Hardware design contributors will be listed here)
+(Additional contributors will be listed here as they make contributions)
 
 ### Documentation Contributors
 
@@ -28,9 +37,10 @@ This project welcomes contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for 
 
 ## Special Thanks
 
+- **rglenn's steady hands** - For heroically soldering tiny components onto test PCBs when my hands get shaky and my eyeballs get twitchy. Not all heroes wear capes; some wield soldering irons with surgical precision! 🦸‍♂️🔧
 - Adafruit Industries for the DRV2605L CircuitPython library
 - The OSC (Open Sound Control) community
-- Early testers and users who provided feedback
+- Early testers and users who provided valuable feedback during development
 
 ## How to Be Listed
 
@@ -63,12 +73,12 @@ If you use this project in your research, please consider:
 
 If you use this project in academic work, please cite:
 
-MissCrispenCakes. (2024). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://github.com/MissCrispenCakes/On-body-haptics
+MissCrispenCakes, & rglenn. (2024). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://github.com/MissCrispenCakes/On-body-haptics
 
 **BibTeX:**
 ```bibtex
 @software{onbodyhaptics2024,
-  author = {MissCrispenCakes},
+  author = {MissCrispenCakes and rglenn},
   title = {On-Body Haptics: Open-Source Wearable Haptic Feedback Systems},
   version = {2.0.0},
   year = {2024},

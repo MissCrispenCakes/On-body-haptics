@@ -212,11 +212,30 @@ This project uses **dual licensing** to cover both software and hardware:
 
 This ensures both software and hardware freedom while using licenses designed for their respective domains.
 
+### Open Source Hardware Certification
+
+**This project is ready for OSHWA certification!** ✅
+
+All requirements for [Open Source Hardware Association (OSHWA)](https://oshwa.org/) certification are met:
+- ✅ OSHWA-approved licenses (CERN-OHL-P v2 + MIT)
+- ✅ Complete design files (KiCad, OpenSCAD, Gerbers)
+- ✅ Clear documentation and accessibility
+- ✅ Third-party component datasheets included
+
+See [OSHWA Certification Guide](docs/OSHWA_CERTIFICATION.md) for step-by-step instructions to get your official OSHW certification mark and UID.
+
 ## 🙏 Acknowledgments
 
+- **[@rglenn](https://github.com/rglenn)** for:
+  - Production-ready PCB designs and Gerber files for manufacturing
+  - 3D printed enclosure samples with battery compartment (a wonderful surprise!)
+  - I2C system implementation and hardware testing
+  - Expert soldering skills for prototype assembly (saving the project from shaky hands and twitchy eyeballs!)
 - Research context from tactile feedback and spatial audio studies
 - DRV2605L haptic driver library by Adafruit
 - OSC protocol implementation using `osc-min` and `python-osc`
+
+See [AUTHORS.md](AUTHORS.md) for complete contributor details.
 
 ## 💖 Support This Project
 

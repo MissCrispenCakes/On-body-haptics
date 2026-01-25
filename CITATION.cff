@@ -10,6 +10,8 @@ type: software
 authors:
   - name: MissCrispenCakes
     alias: MissCrispenCakes
+  - name: rglenn
+    alias: rglenn
 repository-code: 'https://github.com/MissCrispenCakes/On-body-haptics'
 url: 'https://github.com/MissCrispenCakes/On-body-haptics'
 abstract: >-
