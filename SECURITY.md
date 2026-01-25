@@ -211,7 +211,7 @@ Subscribe to repository notifications to stay informed.
 ## Additional Resources
 
 - [OWASP IoT Security Project](https://owasp.org/www-project-internet-of-things/)
-- [Raspberry Pi Security Guidelines](https://www.raspberrypi.org/documentation/configuration/security.md)
+- Raspberry Pi Security Guidelines (see official Raspberry Pi documentation)
 - [OSC Protocol Specification](http://opensoundcontrol.org/spec-1_0)
 
 ## Acknowledgments

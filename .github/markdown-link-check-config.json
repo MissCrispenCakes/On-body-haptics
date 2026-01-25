@@ -14,6 +14,39 @@
     },
     {
       "pattern": "example.com"
+    },
+    {
+      "pattern": "zenodo.org.*XXXXXXX"
+    },
+    {
+      "pattern": "opensoundcontrol.org"
+    },
+    {
+      "pattern": "npmjs.com"
+    },
+    {
+      "pattern": "digikey.com"
+    },
+    {
+      "pattern": "raspberrypi.com"
+    },
+    {
+      "pattern": "raspberrypi.org"
+    },
+    {
+      "pattern": "www.raspberrypi.org"
+    },
+    {
+      "pattern": "docs.cycling74.com"
+    },
+    {
+      "pattern": "docs.derivative.ca"
+    },
+    {
+      "pattern": "DRV2605L.pdf"
+    },
+    {
+      "pattern": "amazon.com"
     }
   ],
   "replacementPatterns": [],
@@ -22,5 +55,5 @@
   "retryOn429": true,
   "retryCount": 3,
   "fallbackRetryDelay": "30s",
-  "aliveStatusCodes": [200, 206]
+  "aliveStatusCodes": [200, 202, 206]
 }

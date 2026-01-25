@@ -86,9 +86,7 @@ MissCrispenCakes, & rglenn. (2024). On-Body Haptics: Open-Source Wearable Haptic
 }
 ```
 
-Or use the DOI from Zenodo (once published):
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+Or use the DOI from Zenodo once published (see [ZENODO_SETUP.md](docs/ZENODO_SETUP.md) for instructions).
 
 ---
 
