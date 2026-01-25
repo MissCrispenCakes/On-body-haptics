@@ -1,6 +1,12 @@
 # On-Body Haptics .gitignore
 
 # ==========================================
+# LOCAL ONLY - NOT TRACKED
+# ==========================================
+# Temporary holding area for files before deletion
+to-sort/
+
+# ==========================================
 # SENSITIVE DATA - NEVER COMMIT
 # ==========================================
 # Configuration files with credentials
