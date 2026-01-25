@@ -1,0 +1,64 @@
+{
+  "$schema": "./schema.json",
+  "comment": "Default configuration for Arduino Bluetooth haptic server",
+
+  "bluetooth": {
+    "enabled": true,
+    "devices": [
+      {
+        "id": 1,
+        "mac": "REPLACE_WITH_YOUR_BLUETOOTH_MAC",
+        "name": "HC-05-Belt-1",
+        "autoReconnect": true
+      }
+    ],
+    "scanTimeout": 10000,
+    "connectionRetries": 3
+  },
+
+  "osc": {
+    "receivePort": 9999,
+    "sendPort": 3333,
+    "address": "0.0.0.0",
+    "comment": "OSC server binds to all interfaces by default"
+  },
+
+  "websocket": {
+    "enabled": true,
+    "port": 8080,
+    "address": "0.0.0.0"
+  },
+
+  "serial": {
+    "baudRate": 57600,
+    "dataBits": 8,
+    "parity": "none",
+    "stopBits": 1
+  },
+
+  "patterns": {
+    "CW": "Clockwise rotation",
+    "CCW": "Counter-clockwise rotation",
+    "PULSE": "Pulse all motors",
+    "CUSTOM1": "Custom pattern 1",
+    "CUSTOM2": "Custom pattern 2",
+    "CUSTOM3": "Custom pattern 3",
+    "CUSTOM4": "Custom pattern 4",
+    "CUSTOM5": "Custom pattern 5",
+    "CUSTOM6": "Custom pattern 6",
+    "CUSTOM7": "Custom pattern 7"
+  },
+
+  "logging": {
+    "level": "info",
+    "console": true,
+    "file": false,
+    "filepath": "./logs/haptics.log"
+  },
+
+  "server": {
+    "name": "On-Body Haptics Server",
+    "version": "2.0.0",
+    "maxClients": 6
+  }
+}

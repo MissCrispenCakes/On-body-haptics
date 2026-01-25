@@ -1,0 +1,94 @@
+name: Documentation CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - '*.md'
+      - '.github/workflows/docs-ci.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - '*.md'
+      - '.github/workflows/docs-ci.yml'
+
+jobs:
+  markdown-lint:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Lint markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v11
+        with:
+          globs: |
+            **/*.md
+            !node_modules
+            !.git
+
+  check-links:
+    name: Check Markdown Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check links in markdown files
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'no'
+          config-file: '.github/markdown-link-check-config.json'
+          check-modified-files-only: 'no'
+
+  validate-structure:
+    name: Validate Documentation Structure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check required documentation files
+        run: |
+          # Check root documentation
+          test -f README.md || exit 1
+          test -f CONTRIBUTING.md || exit 1
+          test -f CODE_OF_CONDUCT.md || exit 1
+          test -f SECURITY.md || exit 1
+          test -f CHANGELOG.md || exit 1
+          test -f LICENSE || exit 1
+
+          # Check documentation structure
+          test -d docs/getting-started || exit 1
+          test -d docs/api || exit 1
+
+          # Check critical guides exist
+          test -f docs/getting-started/choosing-platform.md || exit 1
+          test -f docs/getting-started/arduino-quickstart.md || exit 1
+          test -f docs/getting-started/raspberry-pi-quickstart.md || exit 1
+          test -f docs/api/osc-protocol.md || exit 1
+
+          echo "All required documentation files present"
+
+      - name: Check for broken internal links
+        run: |
+          # Simple check for broken relative links
+          for file in $(find . -name "*.md"); do
+            echo "Checking $file"
+            grep -o '\[.*\](.*\.md)' "$file" | while read link; do
+              path=$(echo "$link" | sed 's/.*](\(.*\))/\1/')
+              dir=$(dirname "$file")
+              if [ ! -f "$dir/$path" ]; then
+                echo "Broken link in $file: $path"
+                exit 1
+              fi
+            done
+          done
+          echo "Internal links check complete"

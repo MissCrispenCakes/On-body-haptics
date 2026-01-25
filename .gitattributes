@@ -1,0 +1,102 @@
+# On-Body Haptics Git Attributes
+
+# ==========================================
+# GIT LFS - Large File Storage
+# ==========================================
+# Track binary files with Git LFS to keep repository size manageable
+
+# Documentation
+*.pdf filter=lfs diff=lfs merge=lfs -text
+*.PDF filter=lfs diff=lfs merge=lfs -text
+
+# Images
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.bmp filter=lfs diff=lfs merge=lfs -text
+*.tiff filter=lfs diff=lfs merge=lfs -text
+*.svg filter=lfs diff=lfs merge=lfs -text
+
+# 3D Models
+*.stl filter=lfs diff=lfs merge=lfs -text
+*.STL filter=lfs diff=lfs merge=lfs -text
+*.step filter=lfs diff=lfs merge=lfs -text
+*.STEP filter=lfs diff=lfs merge=lfs -text
+*.stp filter=lfs diff=lfs merge=lfs -text
+*.obj filter=lfs diff=lfs merge=lfs -text
+
+# PCB Design Files
+*.kicad_pcb filter=lfs diff=lfs merge=lfs -text
+*.kicad_pro filter=lfs diff=lfs merge=lfs -text
+*.kicad_mod filter=lfs diff=lfs merge=lfs -text
+
+# Gerber files (manufacturing)
+*.gbr filter=lfs diff=lfs merge=lfs -text
+*.gbl filter=lfs diff=lfs merge=lfs -text
+*.gtl filter=lfs diff=lfs merge=lfs -text
+*.gbs filter=lfs diff=lfs merge=lfs -text
+*.gts filter=lfs diff=lfs merge=lfs -text
+*.gbo filter=lfs diff=lfs merge=lfs -text
+*.gto filter=lfs diff=lfs merge=lfs -text
+
+# Spreadsheets
+*.xlsx filter=lfs diff=lfs merge=lfs -text
+*.xls filter=lfs diff=lfs merge=lfs -text
+*.ods filter=lfs diff=lfs merge=lfs -text
+
+# Archives (manufacturing files)
+hardware/**/gerbers/*.zip filter=lfs diff=lfs merge=lfs -text
+
+# Videos (future demo content)
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.avi filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
+
+# ==========================================
+# TEXT FILE HANDLING
+# ==========================================
+# Ensure consistent line endings
+
+# Source code - use LF (Unix-style)
+*.js text eol=lf
+*.py text eol=lf
+*.ino text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+
+# OpenSCAD files
+*.scad text eol=lf
+
+# Configuration files
+*.conf text eol=lf
+*.config text eol=lf
+*.service text eol=lf
+
+# Documentation
+*.txt text eol=lf
+*.rst text eol=lf
+
+# Web files
+*.html text eol=lf
+*.css text eol=lf
+*.xml text eol=lf
+
+# ==========================================
+# EXPORT-IGNORE
+# ==========================================
+# Files to exclude from release archives
+
+.gitignore export-ignore
+.gitattributes export-ignore
+.github/ export-ignore
+.vscode/ export-ignore
+tests/ export-ignore
+*.test.js export-ignore
+*.test.py export-ignore

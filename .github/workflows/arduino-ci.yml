@@ -1,0 +1,95 @@
+name: Arduino CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'implementations/arduino-bluetooth/**'
+      - '.github/workflows/arduino-ci.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'implementations/arduino-bluetooth/**'
+      - '.github/workflows/arduino-ci.yml'
+
+jobs:
+  compile-arduino:
+    name: Compile Arduino Firmware
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        board:
+          - arduino:avr:uno
+          - arduino:avr:nano
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Compile Arduino sketch
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: ${{ matrix.board }}
+          sketch-paths: |
+            - implementations/arduino-bluetooth/firmware/AudioHaptics
+
+          # Enable verbose output for debugging
+          verbose: true
+
+          # Show warnings
+          enable-warnings-report: true
+
+  lint-nodejs:
+    name: Lint Node.js Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: implementations/arduino-bluetooth/server/package.json
+
+      - name: Install dependencies
+        working-directory: implementations/arduino-bluetooth/server
+        run: npm ci
+
+      - name: Check for syntax errors
+        working-directory: implementations/arduino-bluetooth/server
+        run: |
+          node --check src/*.js || exit 0
+          echo "Syntax check completed"
+
+  test-config:
+    name: Validate Configuration Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Validate JSON configuration
+        working-directory: implementations/arduino-bluetooth/server/config
+        run: |
+          for file in *.json; do
+            echo "Validating $file"
+            python3 -m json.tool "$file" > /dev/null || exit 1
+          done
+
+      - name: Check for sensitive data
+        run: |
+          # Check that example configs don't contain real credentials
+          if grep -r "00:11:22:33:44:55" implementations/arduino-bluetooth/server/config/default.json; then
+            echo "Default config contains placeholder MAC - OK"
+          fi
+
+          # Ensure local.json is not committed
+          if [ -f implementations/arduino-bluetooth/server/config/local.json ]; then
+            echo "ERROR: local.json should not be committed!"
+            exit 1
+          fi

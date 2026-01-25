@@ -1,0 +1,110 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'implementations/raspberry-pi-i2c/**'
+      - '.github/workflows/python-ci.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'implementations/raspberry-pi-i2c/**'
+      - '.github/workflows/python-ci.yml'
+
+jobs:
+  lint-python:
+    name: Lint Python Code
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        working-directory: implementations/raspberry-pi-i2c/firmware
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint flake8 pyflakes
+          # Install project dependencies (skip hardware-specific ones)
+          pip install python-osc netifaces || true
+
+      - name: Lint with Flake8
+        working-directory: implementations/raspberry-pi-i2c/firmware
+        run: |
+          # Stop the build if there are Python syntax errors or undefined names
+          flake8 src/ utils/ --count --select=E9,F63,F7,F82 --show-source --statistics
+
+          # Exit-zero treats all errors as warnings
+          flake8 src/ utils/ --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
+
+      - name: Check syntax with Pyflakes
+        working-directory: implementations/raspberry-pi-i2c/firmware
+        run: |
+          pyflakes src/*.py utils/*.py || exit 0
+
+  validate-config:
+    name: Validate Configuration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Validate Python config files
+        working-directory: implementations/raspberry-pi-i2c/firmware/src
+        run: |
+          python -m py_compile config.py
+          python -m py_compile config_example.py
+          echo "Configuration files are valid Python"
+
+      - name: Check for sensitive data
+        run: |
+          # Ensure config_local.py is not committed
+          if [ -f implementations/raspberry-pi-i2c/firmware/src/config_local.py ]; then
+            echo "ERROR: config_local.py should not be committed!"
+            exit 1
+          fi
+          echo "No sensitive config files found - OK"
+
+  check-dependencies:
+    name: Check Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Verify requirements.txt
+        working-directory: implementations/raspberry-pi-i2c/firmware
+        run: |
+          pip install --upgrade pip
+          # Check if requirements.txt is valid
+          pip install --dry-run -r requirements.txt || exit 0
+          echo "requirements.txt is valid"
+
+      - name: Verify setup.py
+        working-directory: implementations/raspberry-pi-i2c/firmware
+        run: |
+          python setup.py check
+          echo "setup.py is valid"

@@ -1,0 +1,49 @@
+{
+  "comment": "Example configuration - Copy to local.json and customize",
+
+  "bluetooth": {
+    "enabled": true,
+    "devices": [
+      {
+        "id": 1,
+        "mac": "00:11:22:33:44:55",
+        "name": "HC-05-Belt-1",
+        "autoReconnect": true
+      },
+      {
+        "id": 2,
+        "mac": "00:11:22:33:44:66",
+        "name": "HC-05-Belt-2",
+        "autoReconnect": true
+      }
+    ],
+    "scanTimeout": 10000,
+    "connectionRetries": 3
+  },
+
+  "osc": {
+    "receivePort": 9999,
+    "sendPort": 3333,
+    "address": "0.0.0.0"
+  },
+
+  "websocket": {
+    "enabled": true,
+    "port": 8080,
+    "address": "0.0.0.0"
+  },
+
+  "serial": {
+    "baudRate": 57600,
+    "dataBits": 8,
+    "parity": "none",
+    "stopBits": 1
+  },
+
+  "logging": {
+    "level": "debug",
+    "console": true,
+    "file": true,
+    "filepath": "./logs/haptics.log"
+  }
+}

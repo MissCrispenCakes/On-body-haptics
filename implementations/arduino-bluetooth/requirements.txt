@@ -1,0 +1,18 @@
+# On-Body Haptics - Arduino Bluetooth Bridge
+# Python dependencies for HC-05/HC-06 Bluetooth communication
+
+# Serial communication
+pyserial>=3.5
+
+# Bluetooth communication (Linux/Windows)
+# Note: On Linux, you may need to install system packages:
+#   sudo apt-get install bluetooth libbluetooth-dev
+# On Windows, use the included Windows Bluetooth APIs
+pybluez>=0.23; sys_platform == 'linux'
+
+# Alternative Bluetooth library for cross-platform support
+# Uncomment if pybluez has installation issues
+# bleak>=0.19.0
+
+# OSC protocol (if using Python OSC client for testing)
+python-osc>=1.8.3

@@ -1,0 +1,10 @@
+[Unit]
+Description=OctoPulse Server
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/pi/haptic-uhat/code/octopulse-server.py
+
+[Install]
+WantedBy=multi-user.target

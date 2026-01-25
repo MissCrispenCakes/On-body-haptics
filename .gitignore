@@ -1,0 +1,174 @@
+# On-Body Haptics .gitignore
+
+# ==========================================
+# SENSITIVE DATA - NEVER COMMIT
+# ==========================================
+# Configuration files with credentials
+config/local.json
+config/production.json
+*.secret.json
+.env
+.env.local
+.env.*.local
+
+# Bluetooth MAC addresses
+**/bluetooth-devices.json
+**/paired-devices.txt
+
+# WiFi credentials
+**/wifi-config.json
+**/wpa_supplicant.conf
+
+# ==========================================
+# DEPENDENCIES
+# ==========================================
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.whl
+
+# Virtual environments
+venv/
+env/
+ENV/
+virtualenv/
+
+# ==========================================
+# IDE & EDITOR
+# ==========================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw[a-z]
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ==========================================
+# OPERATING SYSTEM
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ==========================================
+# HARDWARE & EMBEDDED
+# ==========================================
+# Arduino
+*.hex
+*.elf
+*.map
+
+# KiCad backups
+*-bak
+*-cache.lib
+*-rescue.lib
+*.bck
+*.kicad_pcb-bak
+*.kicad_sch-bak
+fp-info-cache
+
+# ==========================================
+# BUILD & TEMPORARY FILES
+# ==========================================
+*.log
+*.tmp
+*.temp
+.cache/
+.pytest_cache/
+.mypy_cache/
+.tox/
+htmlcov/
+*.cover
+.coverage
+.coverage.*
+coverage.xml
+
+# ==========================================
+# DOCUMENTATION BUILD
+# ==========================================
+docs/_build/
+docs/.vuepress/dist/
+site/
+.docusaurus/
+
+# ==========================================
+# TESTING
+# ==========================================
+test-results/
+*.test.log
+
+# ==========================================
+# MISCELLANEOUS
+# ==========================================
+# Backups
+*.bak
+*.backup
+*.old
+
+# Compressed files (except release archives)
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Exceptions for hardware files
+!hardware/**/gerbers/*.zip
+!hardware/**/*.tar.gz
