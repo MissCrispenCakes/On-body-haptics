@@ -198,7 +198,19 @@ pip install -r requirements.txt
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project uses **dual licensing** to cover both software and hardware:
+
+### Software License
+**MIT License** - All software, firmware, and code are licensed under the MIT License.
+- See [LICENSE](LICENSE) for details
+- Includes: Arduino firmware, Python code, Node.js server, test scripts
+
+### Hardware License
+**CERN-OHL-P v2** (CERN Open Hardware License - Permissive) - All hardware designs are licensed under CERN-OHL-P v2.
+- See [LICENSE-HARDWARE](LICENSE-HARDWARE) for details
+- Includes: PCB designs (KiCad), Gerber files, 3D enclosures (STL/OpenSCAD), schematics, BOM
+
+This ensures both software and hardware freedom while using licenses designed for their respective domains.
 
 ## 🙏 Acknowledgments
 
@@ -225,16 +237,26 @@ Your support helps maintain and improve this open-source project!
 
 ## 📚 Citation
 
-If you use this project in your research, please cite:
+If you use this project in your research, please cite using the information in [CITATION.cff](CITATION.cff) or:
 
+**Suggested Citation:**
+
+MissCrispenCakes. (2024). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://github.com/MissCrispenCakes/On-body-haptics
+
+**BibTeX:**
 ```bibtex
 @software{onbodyhaptics2024,
+  author = {MissCrispenCakes},
   title = {On-Body Haptics: Open-Source Wearable Haptic Feedback Systems},
-  author = {Your Name},
+  version = {2.0.0},
   year = {2024},
-  url = {https://github.com/yourusername/On-body-haptics}
+  url = {https://github.com/MissCrispenCakes/On-body-haptics}
 }
 ```
+
+**Zenodo DOI**: Coming soon (archive and get DOI by connecting this repo to Zenodo)
+
+See [CITATION.cff](CITATION.cff) for machine-readable citation metadata and [AUTHORS.md](AUTHORS.md) for contributor information.
 
 ---
 

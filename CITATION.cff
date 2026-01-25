@@ -1,0 +1,41 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: 'On-Body Haptics: Open-Source Wearable Haptic Feedback Systems'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - name: MissCrispenCakes
+    alias: MissCrispenCakes
+repository-code: 'https://github.com/MissCrispenCakes/On-body-haptics'
+url: 'https://github.com/MissCrispenCakes/On-body-haptics'
+abstract: >-
+  Open-source wearable haptic feedback systems for spatial
+  audio, VR/AR, and interactive installations. Provides
+  complete hardware designs (PCBs, enclosures, BOM),
+  firmware, and software for building custom haptic
+  feedback systems that respond to OSC (Open Sound Control)
+  messages. Includes two complete implementations: Arduino
+  + Bluetooth for portable systems, and Raspberry Pi + I2C
+  for high-fidelity effects.
+keywords:
+  - haptics
+  - wearable
+  - tactile feedback
+  - OSC
+  - Arduino
+  - Raspberry Pi
+  - spatial audio
+  - VR
+  - AR
+  - human-computer interaction
+  - open hardware
+license:
+  - MIT
+  - CERN-OHL-P-2.0
+license-url: 'https://github.com/MissCrispenCakes/On-body-haptics#license'
+version: 2.0.0
+date-released: '2024-01-25'

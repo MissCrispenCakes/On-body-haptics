@@ -1,0 +1,44 @@
+{
+  "title": "On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0)",
+  "description": "Open-source wearable haptic feedback systems for spatial audio, VR/AR, and interactive installations. Provides complete hardware designs (PCBs, enclosures, BOM), firmware, and software for building custom haptic feedback systems that respond to OSC (Open Sound Control) messages. Includes two complete implementations: Arduino + Bluetooth for portable systems, and Raspberry Pi + I2C for high-fidelity effects.",
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "MissCrispenCakes"
+    }
+  ],
+  "keywords": [
+    "haptics",
+    "wearable computing",
+    "tactile feedback",
+    "OSC protocol",
+    "Arduino",
+    "Raspberry Pi",
+    "spatial audio",
+    "virtual reality",
+    "augmented reality",
+    "human-computer interaction",
+    "open hardware",
+    "embedded systems",
+    "DRV2605L",
+    "I2C",
+    "Bluetooth"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/MissCrispenCakes/On-body-haptics",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "contributors": [],
+  "references": [],
+  "communities": [
+    {
+      "identifier": "zenodo"
+    }
+  ],
+  "grants": []
+}
