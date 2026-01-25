@@ -1,7 +1,4 @@
 #include <SoftwareSerial.h>
-//#include <OSCBundle.h>
-//#include <SLIPEncodedSerial.h>
-//SLIPEncodedSerial SLIPSerial(Serial);
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -12,19 +9,14 @@ void print_time(unsigned long time_millis);
 
 char c=' '; 
 
-// RX, TX LEDs
-// UNO: SoftwareSerial Bluetooth( 8, 7 ); 
-// LILY: SoftwareSerial Bluetooth( 1, 0 ); ( 17, 16 ); 
-SoftwareSerial Bluetooth( 17, 16 ); //(7->RXblue , 8->TXblue
-//SLIPEncodedSerial SLIPSerial(SoftwareSerial);
+// Bluetooth serial communication (RX=17, TX=16)
+SoftwareSerial Bluetooth(17, 16);
 
 // the on-board LED
 int LED = 13;// Arduino pin numbers
 
-// the haptic-LEDs
-// UNO: PWM- int LEDPins[] = { 3, 5, 6, 9, 10, 11 };
-// LILY: PWM- int LEDPins[] = { 5, 6, 9, 10, 11 };
-int LEDPins[ ] = { 5, 6, 9, 10, 11 };
+// Haptic motor PWM pins
+int LEDPins[] = { 5, 6, 9, 10, 11 };
 
 int FrontLeft = 5;
 int FrontRight = 11;
@@ -35,11 +27,9 @@ int Center = 9;
 int CW[ ] = { Center, SideLeft, FrontLeft, FrontRight, SideRight, Center }; //3
 int CCW[ ] =  { Center, SideRight, FrontRight, FrontLeft, SideLeft, Center }; //4
 int PULSE[ ] = { Center, SideLeft, FrontLeft, Center, SideRight, FrontRight }; //7
-int PULSX[ ] = { Center, SideRight, FrontRight, Center, SideLeft, FrontLeft }; //7
+int PULSX[] = { Center, SideRight, FrontRight, Center, SideLeft, FrontLeft };
 
-// Pedro add -- wants pattern 1: C | 2: C-SL|SR-C | 3: C-SL|SR-FL|FR-SL|SR-C  // combo all together into pattern 4
-
-int FRONT[ ] = { 5, 6 };
+int FRONT[] = { 5, 6 };
 int BACK[ ] = { 10, 11, 9 };
 
 int FL[ ] = { 5, 5 }; // 5, 13
@@ -65,8 +55,7 @@ int numC;
 int freqC;
 int buzzC;
 
-void LED_wave( int PINS[ ], int PINlength, int count, int freq) {
-  //Bluetooth.println( "Testing LED array..." );
+void LED_wave( int PINS[], int PINlength, int count, int freq) {
   Serial.println("\nlights on");
   int delayTime = freq*100;
   Serial.print(delayTime);
@@ -84,28 +73,23 @@ void LED_wave( int PINS[ ], int PINlength, int count, int freq) {
 }
 
 void setup() {
-  Bluetooth.begin( 57600 ); //57600 115200
-  //SLIPSerial.begin( 115200 );
-  Serial.begin( 57600 );
+  Bluetooth.begin(57600);
+  Serial.begin(57600);
   pinMode( LED, OUTPUT );
   for ( index = 0; index <= 5; index++ ) {
     pinMode( LEDPins[ index ], OUTPUT );
   }
 }
 
-void loop() { 
-  //OSCBundle bundleIN;
+void loop() {
   int size;
-  int data = 4;;
+  int data = 4;
   delay(500);
-  if( (size=Bluetooth.available()) > 0 ) {
+  if ((size = Bluetooth.available()) > 0) {
     lights = false;
     Serial.println(data);
-    //Serial.println('\n');
-    while(size--) {
-      //Serial.println(data);
-      //int in = 0;
-      if (full==false) {
+    while (size--) {
+      if (full == false) {
         bundleIN[i] = Bluetooth.read();
         i++;
         if(i==data) {
@@ -187,66 +171,35 @@ void loop() {
           newIN = false;
         } else if (bundleIN[1]=='2') {
           for ( jindex = 0; jindex < numC; jindex++ ) {
-            digitalWrite(9, HIGH);   
+            digitalWrite(9, HIGH);
             delay(freqC*25);
-            digitalWrite(9, LOW);   
-            //delay(freqC*25);
-            //digitalWrite(9, HIGH);   
-            //delay(freqC*100);
-            //digitalWrite(9, LOW);
-            digitalWrite(6, HIGH);   
+            digitalWrite(9, LOW);
+            digitalWrite(6, HIGH);
             digitalWrite(10, HIGH);
-            delay(freqC*25);    
-            digitalWrite(10, LOW);
-            digitalWrite(6, LOW);   
-            //digitalWrite(9, HIGH);
             delay(freqC*25);
-            //digitalWrite(9, LOW);          
-            //delay(freqC*50);
+            digitalWrite(10, LOW);
+            digitalWrite(6, LOW);
+            delay(freqC*25);
            }
           lights = true;
           newIN = false;
         } else if (bundleIN[1]=='3') {
           for ( jindex = 0; jindex < numC; jindex++ ) {
-            digitalWrite(9, HIGH);   
+            digitalWrite(9, HIGH);
             delay(freqC*25);
-            digitalWrite(9, LOW);   
+            digitalWrite(9, LOW);
             delay(freqC*25);
-            //digitalWrite(9, HIGH);   
-            //delay(freqC*50);
-            //digitalWrite(9, LOW);
-            digitalWrite(6, HIGH);   
+            digitalWrite(6, HIGH);
             digitalWrite(10, HIGH);
-            delay(freqC*25);    
+            delay(freqC*25);
             digitalWrite(10, LOW);
-            digitalWrite(6, LOW);   
+            digitalWrite(6, LOW);
             digitalWrite(11, HIGH);
             digitalWrite(5, HIGH);
             delay(freqC*25);
-            //digitalWrite(9, LOW);          
-            //delay(freqC*50);
-            //digitalWrite(9, HIGH);   
-            //delay(freqC*50);
-            //digitalWrite(9, LOW);
-            //digitalWrite(6, HIGH);   
-            //digitalWrite(10, HIGH);
-            //delay(freqC*50);    
-            //digitalWrite(6, LOW);   
-            //digitalWrite(10, LOW);
             digitalWrite(5, LOW);
             digitalWrite(11, LOW);
             delay(freqC*25);
-            //digitalWrite(5, LOW);   
-            //digitalWrite(11, LOW);
-            //digitalWrite(6, HIGH);
-            //digitalWrite(10, HIGH);
-            //delay(freqC*25); 
-            //digitalWrite(10, LOW);
-            //digitalWrite(6, LOW);   
-            //digitalWrite(9, HIGH);
-            //delay(freqC*25);
-            //digitalWrite(9, LOW);
-            //delay(freqC*100);
           }
           lights = true;
           newIN = false;
@@ -268,6 +221,5 @@ void loop() {
         newIN = false;      
       }
     }
-    //Serial.println('\n');
   }
 } 

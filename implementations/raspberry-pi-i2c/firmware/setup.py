@@ -34,8 +34,8 @@ setup(
     long_description=read_file('README.md'),
     long_description_content_type='text/markdown',
     author='On-Body Haptics Project',
-    author_email='your.email@example.com',
-    url='https://github.com/yourusername/On-body-haptics',
+    author_email='',
+    url='https://github.com/MissCrispenCakes/On-body-haptics',
     license='MIT',
 
     packages=find_packages(where='src'),
@@ -47,10 +47,11 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'octopulse-server=octopulse_server:main',
+            'octopulse-server=src.main:main',
             'octopulse-ip-display=utils.ip_display:main',
             'octopulse-gpio-check=utils.gpio_check:main',
             'octopulse-buzz-test=utils.buzz_test:main',
+            'octopulse-buzz-off=utils.buzz_off:main',
         ],
     },
 
@@ -74,8 +75,8 @@ setup(
     keywords='haptics i2c raspberry-pi drv2605 osc wearable tactile-feedback',
 
     project_urls={
-        'Bug Reports': 'https://github.com/yourusername/On-body-haptics/issues',
-        'Source': 'https://github.com/yourusername/On-body-haptics',
-        'Documentation': 'https://github.com/yourusername/On-body-haptics/tree/main/docs',
+        'Bug Reports': 'https://github.com/MissCrispenCakes/On-body-haptics/issues',
+        'Source': 'https://github.com/MissCrispenCakes/On-body-haptics',
+        'Documentation': 'https://github.com/MissCrispenCakes/On-body-haptics/tree/main/docs',
     },
 )

@@ -2,12 +2,12 @@
   "name": "on-body-haptics-arduino-server",
   "version": "2.0.0",
   "description": "OSC to Bluetooth bridge for Arduino-based on-body haptic feedback systems",
-  "main": "src/server.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node src/server.js",
-    "client": "node src/client.js",
-    "audio-haptics": "node src/audio-haptics.js",
-    "test": "node examples/send-pattern.js"
+    "start": "node src/index.js",
+    "test": "node examples/send-pattern.js",
+    "example:pattern": "node examples/send-pattern.js",
+    "example:websocket": "node examples/websocket-server.js"
   },
   "keywords": [
     "haptics",
@@ -22,18 +22,19 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/On-body-haptics.git",
+    "url": "https://github.com/MissCrispenCakes/On-body-haptics.git",
     "directory": "implementations/arduino-bluetooth"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/On-body-haptics/issues"
+    "url": "https://github.com/MissCrispenCakes/On-body-haptics/issues"
   },
-  "homepage": "https://github.com/yourusername/On-body-haptics#readme",
+  "homepage": "https://github.com/MissCrispenCakes/On-body-haptics#readme",
   "engines": {
     "node": ">=14.0.0",
     "npm": ">=6.0.0"
   },
   "dependencies": {
+    "osc": "^2.4.4",
     "osc-min": "^1.1.2",
     "ws": "^8.14.0"
   },
