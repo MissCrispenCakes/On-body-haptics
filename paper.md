@@ -25,7 +25,7 @@ affiliations:
    index: 1
  - name: Independent Researcher, USA
    index: 2
-date: 25 January 2024
+date: 25 January 2026
 bibliography: paper.bib
 ---
 

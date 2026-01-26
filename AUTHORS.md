@@ -73,15 +73,15 @@ If you use this project in your research, please consider:
 
 If you use this project in academic work, please cite:
 
-MissCrispenCakes, & rglenn. (2024). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://github.com/MissCrispenCakes/On-body-haptics
+MissCrispenCakes, & rglenn. (2026). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://github.com/MissCrispenCakes/On-body-haptics
 
 **BibTeX:**
 ```bibtex
-@software{onbodyhaptics2024,
+@software{onbodyhaptics2026,
   author = {MissCrispenCakes and rglenn},
   title = {On-Body Haptics: Open-Source Wearable Haptic Feedback Systems},
   version = {2.0.0},
-  year = {2024},
+  year = {2026},
   url = {https://github.com/MissCrispenCakes/On-body-haptics}
 }
 ```
@@ -90,4 +90,4 @@ Or use the DOI from Zenodo once published (see [ZENODO_SETUP.md](docs/ZENODO_SET
 
 ---
 
-**Last Updated**: 2024-01-25
+**Last Updated**: 2026-01-25

@@ -156,7 +156,7 @@ Use the **Concept DOI** in most citations unless you need to reference a specifi
 Once you have your DOI, citations will look like:
 
 ```
-Author Name. (2024). On-Body Haptics: Open-Source Wearable Haptic
+MissCrispenCakes. (2026). On-Body Haptics: Open-Source Wearable Haptic
 Feedback Systems (Version 2.0.0) [Computer software].
 https://doi.org/10.5281/zenodo.XXXXXXX
 ```

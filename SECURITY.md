@@ -220,5 +220,5 @@ We thank the security research community for helping keep this project secure.
 
 ---
 
-**Last Updated**: 2024-01-25
+**Last Updated**: 2026-01-25
 **Version**: 2.0.0
