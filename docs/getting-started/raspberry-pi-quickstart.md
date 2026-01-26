@@ -674,9 +674,9 @@ public class HapticController : MonoBehaviour {
 
 ## Get Help
 
-- [GitHub Discussions](https://github.com/yourusername/On-body-haptics/discussions)
-- [Report Issues](https://github.com/yourusername/On-body-haptics/issues)
+- [GitHub Discussions](https://github.com/MissCrispenCakes/On-body-haptics/discussions)
+- [Report Issues](https://github.com/MissCrispenCakes/On-body-haptics/issues)
 
 ---
 
-**Enjoy your high-fidelity haptic system!** Share your projects in [Discussions](https://github.com/yourusername/On-body-haptics/discussions/categories/show-and-tell)! 🎉
+**Enjoy your high-fidelity haptic system!** Share your projects in [Discussions](https://github.com/MissCrispenCakes/On-body-haptics/discussions/categories/show-and-tell)! 🎉

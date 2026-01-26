@@ -224,5 +224,5 @@ Once you've chosen your platform:
 ## Support
 
 Questions? Check out:
-- [GitHub Discussions](https://github.com/yourusername/On-body-haptics/discussions)
-- [GitHub Issues](https://github.com/yourusername/On-body-haptics/issues)
+- [GitHub Discussions](https://github.com/MissCrispenCakes/On-body-haptics/discussions)
+- [GitHub Issues](https://github.com/MissCrispenCakes/On-body-haptics/issues)
