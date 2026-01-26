@@ -9,6 +9,11 @@ Transform spatial information into tactile sensations with wearable haptic devic
 
 ## ✨ Features
 
+- **Audio-Reactive by Design**
+  - Originally built as audio-reactive LED wearables (sound → light patterns)
+  - Evolved into audio-haptic feedback systems (sound → tactile patterns)
+  - Signal-agnostic: responds to any OSC-formatted input (audio, sensors, game engines, etc.)
+
 - **Two Complete Implementations**
   - **Arduino + Bluetooth**: Portable system with up to 6 wireless haptic belts
   - **Raspberry Pi + I2C**: High-fidelity system with 8 channels and 120+ haptic effects
@@ -236,6 +241,13 @@ See [OSHWA Certification Guide](docs/OSHWA_CERTIFICATION.md) for step-by-step in
 - OSC protocol implementation using `osc-min` and `python-osc`
 
 See [AUTHORS.md](AUTHORS.md) for complete contributor details.
+
+## 📰 Press & Features
+
+- **[Hackaday](https://hackaday.com/2020/02/12/in-pursuit-of-haptics-for-a-better-vr-experience/)** - "In Pursuit of Haptics for a Better VR Experience" (February 2020)
+- **[Mitacs Grant](https://www.mitacs.ca/our-projects/washable-wearables-for-affordable-and-aesthetic-augmentation-of-visuo-tactile-sensory-perception-enhancement-in-mixed-reality/)** - "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality"
+
+> 💡 **Maker Tip**: Swap the haptic motors for LEDs and you've got a wearable light display! Same control protocol, different sensory modality. The original prototype used audio-reactive LEDs before evolving into haptic feedback. 🌈
 
 ## 💖 Support This Project
 

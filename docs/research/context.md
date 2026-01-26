@@ -6,6 +6,35 @@ Academic and research context for On-Body Haptics project.
 
 This project builds upon decades of research in haptic feedback, tactile perception, and human-computer interaction. This page provides context and references for researchers using this platform.
 
+## Design Philosophy: Audio-Reactive Haptics
+
+The On-Body Haptics project originated as an **audio-reactive wearable LED system**. The first Arduino prototype responded to audio input - claps, music, and environmental sounds would trigger spatial light patterns worn around the body. This sound-to-light mapping proved so compelling that it inspired the next evolution: translating the same patterns into tactile feedback.
+
+### From Light to Touch
+
+The transition from LEDs to haptic motors revealed something interesting: **the control architecture didn't need to change**. The same OSC protocol that drove light patterns could drive haptic patterns. The same audio analysis that triggered LEDs could trigger vibrations. The system was inherently **signal-agnostic** - it doesn't care whether the input comes from:
+
+- Audio analysis (FFT, beat detection, amplitude)
+- MIDI controllers and musical instruments
+- Game engines and VR systems
+- Sensor networks (proximity, motion, biometric)
+- Creative coding platforms (Max/MSP, TouchDesigner, Processing)
+- Custom applications via OSC
+
+This flexibility emerged from the original audio-reactive design and became a core principle: **any signal can become a haptic experience**.
+
+### Hardware Modularity
+
+The same principle applies to outputs: swap haptic motors for LEDs and you have a wearable light display. Swap for speakers and you have a spatial audio system. The modular design means the platform supports experimentation across sensory modalities.
+
+### Research Context & Funding
+
+**Press Coverage:**
+- [Hackaday (2020)](https://hackaday.com/2020/02/12/in-pursuit-of-haptics-for-a-better-vr-experience/) - "In Pursuit of Haptics for a Better VR Experience"
+
+**Research Funding:**
+- [Mitacs Grant](https://www.mitacs.ca/our-projects/washable-wearables-for-affordable-and-aesthetic-augmentation-of-visuo-tactile-sensory-perception-enhancement-in-mixed-reality/) - "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality"
+
 ## Key Research Areas
 
 ### Haptic Feedback in VR/AR
