@@ -12,9 +12,9 @@ This guide helps you decide between the Arduino + Bluetooth and Raspberry Pi + I
 | **Haptic Effects** | On/Off patterns only | 120+ effects (DRV2605L) |
 | **Effect Quality** | Basic vibration | High-fidelity LRA effects |
 | **Portability** | ⭐⭐⭐⭐⭐ Very portable | ⭐⭐⭐ Portable with power bank |
-| **Battery Life** | 8-12 hours (9V battery) | 4-6 hours (power bank) |
+| **Battery Life** | 4-8 hours (3.7V LiPo) | 4-6 hours (power bank) |
 | **Setup Complexity** | ⭐⭐⭐ Moderate | ⭐⭐⭐⭐ Advanced |
-| **Cost per System** | ~$50 per belt | ~$150 total |
+| **Cost per System** | ~$30 per belt | ~$150 total |
 | **Latency** | ~50-100ms | ~10-30ms |
 | **Customization** | Pattern-based | Effect library + patterns |
 | **Development Platform** | Arduino IDE + Node.js | Python |
@@ -83,10 +83,10 @@ This guide helps you decide between the Arduino + Bluetooth and Raspberry Pi + I
 - **Microcontroller**: Arduino Uno/Nano (~$5-25)
 - **Bluetooth Module**: HC-05 or HC-06 (~$5-10)
 - **Haptic Actuators**: 5x coin vibration motors or LRAs (~$10)
-- **Power**: 9V battery or USB power bank
+- **Power**: 3.7V LiPo battery (~$5-10)
 - **PCB**: Optional (can use breadboard or protoboard)
 - **Enclosure**: 3D printed or DIY
-- **Total**: ~$50 per belt
+- **Total**: ~$30-50 per belt
 
 #### Raspberry Pi + I2C
 - **Computer**: Raspberry Pi 3/4/Zero 2W (~$35-55)

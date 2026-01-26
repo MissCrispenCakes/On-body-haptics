@@ -163,8 +163,8 @@ ws.onopen = () => {
 - **Microcontroller**: Arduino Uno/Nano
 - **Bluetooth**: HC-05 or HC-06 module
 - **Haptic Drivers**: 5x coin vibration motors or LRAs
-- **Power**: 9V battery or USB power bank
-- **Total Cost**: ~$50 per belt
+- **Power**: 3.7V LiPo battery
+- **Total Cost**: ~$30 per belt
 
 ### Raspberry Pi + I2C
 - **Computer**: Raspberry Pi 3/4/Zero 2W

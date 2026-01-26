@@ -20,9 +20,9 @@ A portable, battery-powered haptic belt with 5 vibration motors controlled via B
 - **5x 1kΩ resistors** (~$0.50)
 - **5x 1N4001 diodes** (~$0.50)
 - **Breadboard and jumper wires** (~$5)
-- **9V battery or USB power bank** (~$5-10)
+- **3.7V LiPo battery** (~$5-10)
 
-**Total Cost**: ~$30-60 per belt
+**Total Cost**: ~$25-50 per belt
 
 ### Software Required
 

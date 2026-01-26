@@ -65,7 +65,7 @@ If yes, what changes did you make?
 
 **Haptic actuators:** [e.g., coin vibration motors, LRAs]
 
-**Power source:** [e.g., 9V battery, USB power bank]
+**Power source:** [e.g., 3.7V LiPo, USB power bank]
 
 ## Network
 

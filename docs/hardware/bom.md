@@ -30,7 +30,7 @@ This BOM covers both implementations. You only need components for the system yo
 
 | Component | Quantity | Description | Approx. Cost |
 |-----------|----------|-------------|--------------|
-| Battery Pack | 1 | 4xAA or LiPo | $10-20 |
+| Battery | 1 | 3.7V LiPo (500-1000mAh) | $5-10 |
 | Power Switch | 1 | SPST toggle | $1 |
 
 ### PCB & Assembly
