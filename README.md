@@ -48,7 +48,7 @@ Transform spatial information into tactile sensations with wearable haptic devic
 | **Haptic Effects** | On/Off patterns | 120+ DRV2605L effects |
 | **Portability** | ⭐⭐⭐⭐⭐ Highly portable | ⭐⭐⭐ Portable with power bank |
 | **Setup Complexity** | ⭐⭐⭐ Moderate | ⭐⭐⭐⭐ Advanced |
-| **Cost** | ~$50 per belt | ~$150 total |
+| **Cost** | ~$30 per belt | ~$150 total |
 
 **New to haptics?** Start with the **[Arduino + Bluetooth](docs/getting-started/arduino-quickstart.md)** implementation.
 
@@ -184,7 +184,7 @@ We welcome contributions! Whether you're fixing bugs, improving documentation, o
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/On-body-haptics.git
+git clone https://github.com/MissCrispenCakes/On-body-haptics.git
 cd On-body-haptics
 
 # For Arduino implementation
@@ -244,15 +244,15 @@ If you find this project useful, consider:
 - ⭐ Starring this repository
 - 🐛 Reporting bugs and suggesting features
 - 📖 Improving documentation
-- 💰 [Sponsoring development](https://github.com/sponsors/yourusername)
+- 💰 [Sponsoring development](https://github.com/sponsors/KDF-dev)
 
 Your support helps maintain and improve this open-source project!
 
 ## 📞 Contact & Community
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/On-body-haptics/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/On-body-haptics/discussions)
-- **Email**: your.email@example.com
+- **Issues**: [GitHub Issues](https://github.com/MissCrispenCakes/On-body-haptics/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/MissCrispenCakes/On-body-haptics/discussions)
+- **Website**: [KDF Entertainment](https://www.kdfentertainment.com/about)
 
 ## 📚 Citation
 
