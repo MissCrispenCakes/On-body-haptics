@@ -260,12 +260,12 @@ If you use this project in your research, please cite using the information in [
 
 **Suggested Citation:**
 
-MissCrispenCakes. (2026). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://github.com/MissCrispenCakes/On-body-haptics
+MissCrispenCakes, & rglenn. (2026). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://github.com/MissCrispenCakes/On-body-haptics
 
 **BibTeX:**
 ```bibtex
 @software{onbodyhaptics2026,
-  author = {MissCrispenCakes},
+  author = {MissCrispenCakes and rglenn},
   title = {On-Body Haptics: Open-Source Wearable Haptic Feedback Systems},
   version = {2.0.0},
   year = {2026},
