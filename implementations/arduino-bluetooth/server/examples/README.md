@@ -150,6 +150,6 @@ Arguments: [repetitions, frequency]
 
 ## Additional Resources
 
-- [OSC Protocol Specification](../../../docs/api/osc-protocol.md)
-- [Arduino API Documentation](../../../docs/api/arduino-api.md)
-- [Integration Guides](../../../docs/integration/)
+- [OSC Protocol Specification](../../../../docs/api/osc-protocol.md)
+- [Arduino API Documentation](../../../../docs/api/arduino-api.md)
+- [Integration Guides](../../../../docs/integration/)
