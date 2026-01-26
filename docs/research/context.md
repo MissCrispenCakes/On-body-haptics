@@ -35,6 +35,9 @@ The same principle applies to outputs: swap haptic motors for LEDs and you have 
 **Research Funding:**
 - [Mitacs Grant](https://www.mitacs.ca/our-projects/washable-wearables-for-affordable-and-aesthetic-augmentation-of-visuo-tactile-sensory-perception-enhancement-in-mixed-reality/) - "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality"
 
+**Academic Partnerships:**
+- [York University](https://www.yorku.ca/procurement/oba/kdf-entertainment/) - KDF Entertainment is an official procurement vendor, enabling direct collaboration with York University research groups
+
 ## Key Research Areas
 
 ### Haptic Feedback in VR/AR

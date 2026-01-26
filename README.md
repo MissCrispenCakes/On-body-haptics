@@ -246,6 +246,7 @@ See [AUTHORS.md](AUTHORS.md) for complete contributor details.
 
 - **[Hackaday](https://hackaday.com/2020/02/12/in-pursuit-of-haptics-for-a-better-vr-experience/)** - "In Pursuit of Haptics for a Better VR Experience" (February 2020)
 - **[Mitacs Grant](https://www.mitacs.ca/our-projects/washable-wearables-for-affordable-and-aesthetic-augmentation-of-visuo-tactile-sensory-perception-enhancement-in-mixed-reality/)** - "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality"
+- **[York University Procurement](https://www.yorku.ca/procurement/oba/kdf-entertainment/)** - KDF Entertainment is an official procurement vendor to York University
 
 > 💡 **Maker Tip**: Swap the haptic motors for LEDs and you've got a wearable light display! Same control protocol, different sensory modality. The original prototype used audio-reactive LEDs before evolving into haptic feedback. 🌈
 
