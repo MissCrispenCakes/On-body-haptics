@@ -151,4 +151,4 @@ Full list: [DRV2605L Datasheet Table 11.2](http://www.ti.com/lit/ds/symlink/drv2
 
 ## License
 
-MIT License - See [LICENSE](../../../LICENSE) for details.
+MIT License - See [LICENSE](../../../../LICENSE) for details.
