@@ -34,8 +34,6 @@ def handler(signal_received, frame):
 
 def main():
     """Main test loop."""
-    global drv
-
     # Initialize I2C bus
     i2c = busio.I2C(board.SCL, board.SDA)
 
