@@ -3,59 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=https://github.com/MissCrispenCakes/On-body-haptics">
     <title>On-Body Haptics - Open Source Wearable Haptic Feedback Systems</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-        }
-        .container {
+            padding: 4rem 2rem;
             text-align: center;
-            padding: 2rem;
-            max-width: 600px;
         }
-        h1 {
-            font-size: 2.5rem;
+        .hero h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
-        p {
-            font-size: 1.2rem;
+        .hero p {
+            font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.95;
         }
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
         .button {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 12px 28px;
             background: white;
             color: #667eea;
             text-decoration: none;
             border-radius: 6px;
             font-weight: 600;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .button:hover {
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        .spinner {
-            margin-top: 2rem;
-            opacity: 0.7;
+        .button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .feature {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .links {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #e1e4e8;
+        }
+        .links h2 {
+            margin-bottom: 1.5rem;
+            color: #667eea;
+        }
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .link-card {
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .link-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+        .link-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            background: #24292e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="hero">
         <h1>🎮 On-Body Haptics</h1>
         <p>Open-source wearable haptic feedback systems for spatial audio, VR/AR, and interactive installations</p>
-        <p>Redirecting to the project repository...</p>
-        <a href="https://github.com/MissCrispenCakes/On-body-haptics" class="button">View Project on GitHub</a>
-        <div class="spinner">⚡</div>
+        <div class="buttons">
+            <a href="https://github.com/MissCrispenCakes/On-body-haptics" class="button" target="_blank">View on GitHub</a>
+            <a href="https://github.com/MissCrispenCakes/On-body-haptics#-quick-start" class="button secondary" target="_blank">Quick Start Guide</a>
+        </div>
     </div>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature">
+                <h3>🔧 Two Complete Implementations</h3>
+                <p>Arduino + Bluetooth for portable systems, or Raspberry Pi + I2C for high-fidelity effects with 120+ haptic patterns</p>
+            </div>
+            <div class="feature">
+                <h3>🎯 OSC Protocol Integration</h3>
+                <p>Works seamlessly with Max/MSP, TouchDesigner, Unity, Pure Data, and any OSC-compatible software</p>
+            </div>
+            <div class="feature">
+                <h3>⚡ Open Hardware</h3>
+                <p>Complete PCB designs, Gerber files, 3D-printable enclosures, and Bill of Materials included</p>
+            </div>
+            <div class="feature">
+                <h3>📚 Comprehensive Docs</h3>
+                <p>15-minute quick start guides, API references, and integration examples for popular platforms</p>
+            </div>
+            <div class="feature">
+                <h3>💰 Low Cost</h3>
+                <p>Build an Arduino system for ~$30 or a Raspberry Pi system for ~$150</p>
+            </div>
+            <div class="feature">
+                <h3>🎨 Production Ready</h3>
+                <p>Used in VR experiences, art installations, research projects, and interactive exhibits</p>
+            </div>
+        </div>
+
+        <div class="links">
+            <h2>📖 Documentation</h2>
+            <div class="link-grid">
+                <a href="docs/getting-started/choosing-platform.html" class="link-card">
+                    <h4>🤔 Choosing a Platform</h4>
+                    <p>Arduino vs Raspberry Pi comparison guide</p>
+                </a>
+                <a href="docs/getting-started/arduino-quickstart.html" class="link-card">
+                    <h4>⚡ Arduino Quick Start</h4>
+                    <p>15-minute setup for portable systems</p>
+                </a>
+                <a href="docs/getting-started/raspberry-pi-quickstart.html" class="link-card">
+                    <h4>🥧 Raspberry Pi Quick Start</h4>
+                    <p>15-minute setup for high-fidelity effects</p>
+                </a>
+                <a href="docs/api/osc-protocol.html" class="link-card">
+                    <h4>📡 OSC Protocol</h4>
+                    <p>Complete API specification and examples</p>
+                </a>
+                <a href="docs/hardware/assembly-guide.html" class="link-card">
+                    <h4>🔨 Hardware Assembly</h4>
+                    <p>Step-by-step build instructions</p>
+                </a>
+                <a href="docs/hardware/pcb-fabrication.html" class="link-card">
+                    <h4>⚙️ PCB Fabrication</h4>
+                    <p>How to order custom PCBs</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="links">
+            <h2>💡 Use Cases</h2>
+            <p>Perfect for spatial audio feedback, VR/AR navigation, interactive installations, accessibility applications, research projects, gaming, and telepresence.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Built with ❤️ for the haptics and HCI community</p>
+        <p>
+            <a href="https://github.com/MissCrispenCakes/On-body-haptics" target="_blank">GitHub</a> •
+            <a href="https://github.com/sponsors/KDF-dev" target="_blank">Sponsor</a> •
+            <a href="https://github.com/MissCrispenCakes/On-body-haptics/blob/main/LICENSE" target="_blank">MIT License</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">
+            Part of <a href="https://www.kdfentertainment.com" target="_blank">KDF Entertainment</a> open source tools
+        </p>
+    </footer>
 </body>
 </html>
