@@ -187,4 +187,40 @@ JOSS_SUBMISSION_ANALYSIS.md
 # Exceptions for hardware files
 !hardware/**/gerbers/*.zip
 !hardware/**/*.tar.gz
+
+# ==========================================
+# JOSS/LATEX PAPER BUILD ARTIFACTS
+# ==========================================
+# Generated paper PDF (build artifact from GitHub Actions)
+paper.pdf
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+
+# ==========================================
+# DOCUMENTATION ARTIFACTS
+# ==========================================
+# Temporary/working documentation files
+docs/text-npm.txt
+docs/osc_nsamespace
+
+# ==========================================
+# ARDUINO IDE
+# ==========================================
+# Arduino IDE preferences and cache
+.arduino15/
+arduino_debug.log
+arduino_secrets.h
+
+# ==========================================
+# RASPBERRY PI SPECIFIC
+# ==========================================
+# Pi system files if you ever work directly on Pi
+*.img
+*.iso
+
 /.claude
