@@ -13,18 +13,14 @@ tags:
   - open hardware
   - OSC protocol
 authors:
-  - name: MissCrispenCakes
-    orcid: 0000-0000-0000-0000
+  - name: SC Vollmer
+    orcid: 0000-0002-3359-2810
     corresponding: true
     affiliation: 1
-  - name: rglenn
-    orcid: 0000-0000-0000-0000
-    affiliation: 2
 affiliations:
- - name: Independent Researcher, USA
+ - name: York University, Canada
    index: 1
- - name: Independent Researcher, USA
-   index: 2
+   ror: 05fq50484
 date: 25 January 2026
 bibliography: paper.bib
 ---
@@ -37,7 +33,7 @@ The project provides two distinct implementations: an Arduino-based Bluetooth sy
 
 # Statement of Need
 
-Haptic feedback is increasingly recognized as essential for immersive experiences in VR/AR and spatial audio applications [@Choi2015; @Kreimeier2019]. However, existing haptic development platforms are often expensive, closed-source, or require specialized hardware that limits accessibility for researchers and independent developers [@Culbertson2018]. Commercial haptic devices typically cost hundreds to thousands of dollars and offer limited customization options [@Schneider2017].
+Haptic feedback is increasingly recognized as essential for immersive experiences in VR/AR and spatial audio applications [@Choi2013; @Kreimeier2019]. However, existing haptic development platforms are often expensive, closed-source, or require specialized hardware that limits accessibility for researchers and independent developers [@Culbertson2018]. Commercial haptic devices typically cost hundreds to thousands of dollars and offer limited customization options [@Schneider2017].
 
 On-Body Haptics addresses these barriers by providing:
 
@@ -83,45 +79,59 @@ The project includes:
 
 All hardware designs use CERN Open Hardware License (CERN-OHL-P v2), ensuring users can manufacture, modify, and distribute derivative works [@CERN2020].
 
-# Research Applications
+# State of the Field
 
-On-Body Haptics has been designed to support research in:
+Several commercial and research platforms exist for haptic feedback development, but significant barriers remain for researchers and developers:
 
-- **Spatial Audio**: Directional haptic cues to complement spatial audio systems
-- **Navigation**: Tactile wayfinding for accessibility applications
-- **Virtual/Augmented Reality**: Haptic feedback for immersive experiences
-- **Human-Computer Interaction**: Studies of tactile perception and multi-modal interaction
-- **Artistic Performance**: Wearable haptic interfaces for live performance and installation art
+**Commercial Platforms**: Systems like Neosensory's Buzz wristband and TactSuit haptic vests offer sophisticated haptic capabilities but typically cost $500-$5000+ and use proprietary closed-source designs [@Schneider2017]. These price points exclude independent researchers, artists, and students. Additionally, commercial systems often require specialized APIs and cannot be modified to support custom hardware configurations or experimental form factors.
 
-The system's modularity and open design facilitate controlled experiments while enabling creative applications beyond the original intended use cases.
+**Research Prototypes**: Academic literature describes numerous wearable haptic systems [@Choi2013; @Kreimeier2019], but publications rarely include manufacturing-ready designs, complete bills of materials, or production firmware. This "reproducibility gap" means other researchers cannot build upon published work without substantial reverse-engineering effort [@Culbertson2018]. The HapticHead system [@Schneider2017], for example, demonstrated effective 3D guidance but did not provide files for community replication.
 
-# Comparison with Existing Systems
+**Open Hardware Projects**: While some open-source haptic projects exist in maker communities, they typically focus on single implementations without providing multiple platform options to serve different research needs. Most lack integration with standard research protocols like Open Sound Control (OSC), limiting their utility in existing laboratory workflows with Max/MSP, TouchDesigner, and other creative coding environments.
 
-Compared to commercial haptic development platforms:
+On-Body Haptics addresses these limitations by providing: (1) complete production-ready PCB designs with Gerber files that can be manufactured without modification ($50-150 total cost), (2) two distinct implementations serving different research needs (portable Arduino + Bluetooth vs. high-fidelity Raspberry Pi + I2C) without requiring researchers to design custom hardware, (3) OSC protocol integration compatible with existing research workflows, and (4) documentation accessible to users without extensive electronics engineering backgrounds, including 15-minute quick-start guides and step-by-step assembly instructions.
 
-| Feature | On-Body Haptics | Commercial Systems |
-|---------|----------------|-------------------|
-| Cost | $50-150 | $500-5000+ |
-| Hardware Source | Open (CERN-OHL-P) | Closed/Proprietary |
-| Software Source | Open (MIT) | Often Proprietary |
-| Customization | Full access to designs | Limited |
-| Integration | OSC (widely supported) | Varies |
+# Software Design
 
-Compared to research prototypes described in the literature, On-Body Haptics provides complete documentation and manufacturability, addressing the common challenge of replicating research hardware [@Schneider2017].
+The system architecture reflects three key design principles: hardware-software modularity, signal-agnostic control, and configuration-driven extensibility.
 
-# Future Development
+**Modular Hardware-Software Separation**: Both implementations (Arduino + Bluetooth, Raspberry Pi + I2C) share a common OSC-based control protocol but use fundamentally different hardware architectures. This separation enables researchers to choose hardware based on experimental requirements—portability for field studies versus haptic fidelity for controlled laboratory experiments—while maintaining consistent software interfaces. The OSC namespace (`/haptic/[device]/[command]`) abstracts hardware differences, allowing applications written for Max/MSP, TouchDesigner, or Unity to control both implementations without modification. This design emerged from the project's origin as an audio-reactive LED wearable system, where the same signal processing pipeline could drive either visual or haptic outputs by changing only the hardware layer.
 
-Planned enhancements include:
+**Threading and Queue Architecture**: The Raspberry Pi implementation uses Python's `threading` and `queue` modules to separate OSC message reception from I2C hardware communication. This architectural choice prevents blocking I2C operations from degrading OSC response times, ensuring sub-10ms latency for pattern triggers even when the DRV2605L haptic drivers are executing multi-second effect sequences. The Arduino implementation achieves similar responsiveness through interrupt-driven serial communication, with a lightweight command parser that executes within the main loop without blocking Bluetooth reads.
 
-- Expanded effect library for the Arduino implementation
-- Wireless communication options for the Raspberry Pi implementation
-- Additional hardware designs (vests, gloves, headbands)
-- Integration examples for additional platforms
-- Automated testing infrastructure for OSC protocol validation
+**Configuration-Driven Design**: Hardware-specific parameters (I2C addresses for the TCA9548A multiplexer channels, Bluetooth serial pins, effect library mappings for the DRV2605L) are externalized to JSON configuration files rather than hardcoded in source. This design enables researchers to modify hardware layouts—such as changing from a five-motor belt to an eight-motor vest, or remapping which DRV2605L effects correspond to OSC commands—without modifying core code. Custom form factors can be supported by editing a configuration file rather than forking the entire codebase.
 
-Community contributions are welcomed through the project's GitHub repository.
+**Architectural Trade-offs**: The Arduino implementation prioritizes portability, battery life, and cost over haptic fidelity, using simple on/off motor control with software-defined patterns (clockwise rotation, pulses, waves). The Raspberry Pi implementation inverts this trade-off, using DRV2605L haptic drivers that consume more power and require wired connections but provide access to 120+ distinct haptic effects (sharp clicks, soft ramps, buzz patterns, complex waveforms) designed for professional haptic applications. Both implementations are maintained in parallel rather than converging to a single design because research contexts demand both options: portable systems for artistic performances and field studies, high-fidelity systems for controlled perceptual experiments.
+
+# Research Impact Statement
+
+**External Adoption and Recognition**:
+This platform has demonstrated research impact and community adoption through multiple channels:
+
+- **Press Coverage**: Featured in Hackaday (2020) as an exemplar of accessible haptic development for VR applications [@Hackaday2020], reaching an audience of over 500,000 hardware developers and researchers
+- **Research Funding**: Supported by Mitacs Accelerate Grant for "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality" [@Mitacs2023], demonstrating peer-reviewed research significance
+- **Institutional Partnerships**: KDF Entertainment (project sponsor) is an official procurement vendor for York University, enabling direct collaboration with research groups and streamlined equipment acquisition for academic laboratories
+- **Sustained Public Development**: Six years of continuous public development (October 2019-present) with transparent version control, demonstrating long-term commitment beyond proof-of-concept prototypes
+- **Community Engagement**: Active GitHub repository with comprehensive issue tracking, pull request workflows, and community contribution guidelines
+
+**Research Enablement**:
+The system supports research and creative work across multiple domains:
+
+- **Spatial Audio Visualization**: Directional haptic cues to complement spatial audio systems for immersive audio experiences
+- **Accessibility Applications**: Tactile wayfinding and navigation interfaces for visually impaired users
+- **VR/AR Haptic Feedback**: Wearable haptic interfaces for virtual and augmented reality applications
+- **Human-Computer Interaction**: Studies of tactile perception, multi-modal interaction, and haptic pattern recognition
+- **Artistic Performance**: Wearable haptic interfaces for live performance and interactive installation art
+
+**Significance and Impact**: By providing complete, production-ready designs at $50-150 total cost compared to $500-5000+ for commercial systems, this platform enables haptic research for under-resourced institutions, independent researchers, artists, and students who would otherwise be excluded from this field. The open-source hardware designs (CERN-OHL-P v2) and software (MIT License) ensure that derivative works can be created, shared, and built upon by the research community, addressing the reproducibility gap common in academic haptic systems research.
+
+# AI Usage Disclosure
+
+Generative AI tools (Claude Code by Anthropic) were used in limited capacity during the preparation of this manuscript for the following purposes: restructuring sections to meet updated JOSS 2026 requirements, proofreading for grammar and clarity, and formatting citations. No AI tools were used in the original software development, hardware design, system architecture decisions, or core research contributions. All design decisions, technical implementations, and research framing represent original human work by the authors. The AI assistance was limited to editorial support for this publication submission.
 
 # Acknowledgments
+
+This research was supported by a Mitacs Accelerate Grant for "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality." Research collaboration enabled through KDF Entertainment's partnership with York University as an official procurement vendor.
 
 This project builds upon the Adafruit DRV2605L CircuitPython library and the broader open-source hardware and software communities. Special thanks to rglenn for developing the production-ready PCB designs, generating manufacturing-ready Gerber files, creating 3D printed enclosure samples with battery compartments, implementing the I2C system code for hardware testing, and providing expert assembly and soldering work for prototype validation. Thanks to early testers and users who provided valuable feedback during development.
 

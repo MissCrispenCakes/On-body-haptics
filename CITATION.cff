@@ -8,10 +8,22 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - name: MissCrispenCakes
+  - family-names: Vollmer
+    given-names: SC
+    orcid: 'https://orcid.org/0000-0002-3359-2810'
+    affiliation: 'York University'
     alias: MissCrispenCakes
+contact:
+  - family-names: Vollmer
+    given-names: SC
+    orcid: 'https://orcid.org/0000-0002-3359-2810'
+    affiliation: 'York University'
+    email: workscv@yorku.ca
+contributors:
   - name: rglenn
     alias: rglenn
+    type: person
+    role: 'Raspberry Pi PCB layout design and assembly (2019-2020)'
 repository-code: 'https://github.com/MissCrispenCakes/On-body-haptics'
 url: 'https://github.com/MissCrispenCakes/On-body-haptics'
 abstract: >-

@@ -161,6 +161,15 @@ test-results/
 *.test.log
 
 # ==========================================
+# SUBMISSION & REVIEW FILES
+# ==========================================
+# JOSS submission analysis and draft work
+JOSS_SUBMISSION_ANALYSIS.md
+*_ANALYSIS.md
+*_DRAFT.md
+*_REVIEW.md
+
+# ==========================================
 # MISCELLANEOUS
 # ==========================================
 # Backups
