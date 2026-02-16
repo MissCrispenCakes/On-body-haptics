@@ -1,5 +1,7 @@
 # Authors and Contributors
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18665329.svg)](https://doi.org/10.5281/zenodo.18665329)
+
 ## Project Lead & Creator
 
 **MissCrispenCakes** ([@MissCrispenCakes](https://github.com/MissCrispenCakes))

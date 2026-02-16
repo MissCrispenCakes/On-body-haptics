@@ -3,6 +3,7 @@
 > **Open-source wearable haptic feedback systems for spatial audio, VR/AR, and interactive installations**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18665329.svg)](https://doi.org/10.5281/zenodo.18665329)
 [![Sponsor](https://img.shields.io/badge/Sponsor-❤-red)](https://github.com/sponsors/MissCrispenCakes)
 
 Transform spatial information into tactile sensations with wearable haptic devices. This project provides complete hardware designs, firmware, and software for building custom haptic feedback systems that respond to OSC (Open Sound Control) messages.
