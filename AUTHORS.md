@@ -1,6 +1,6 @@
 # Authors and Contributors
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18665329.svg)](https://doi.org/10.5281/zenodo.18665329)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18665328.svg)](https://doi.org/10.5281/zenodo.18665328)
 
 ## Project Lead & Creator
 
@@ -80,7 +80,7 @@ If you use this project in your research, please consider:
 
 If you use this project in academic work, please cite:
 
-Vollmer, S. C. (2026). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://doi.org/10.5281/zenodo.18665329
+Vollmer, S. C. (2026). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://doi.org/10.5281/zenodo.18665328
 
 **BibTeX:**
 ```bibtex
