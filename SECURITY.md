@@ -170,7 +170,7 @@ On-Body Haptics is an open-source project for building wearable haptic feedback 
 If you discover a security vulnerability in On-Body Haptics, please report it responsibly:
 
 1. **Do NOT open a public GitHub issue**
-2. **Email**: security@example.com (replace with actual contact)
+2. **Email**: workscv@yorku.ca
 3. **Include**:
    - Description of the vulnerability
    - Steps to reproduce
@@ -220,5 +220,5 @@ We thank the security research community for helping keep this project secure.
 
 ---
 
-**Last Updated**: 2026-01-25
+**Last Updated**: 2026-02-17
 **Version**: 2.0.0
