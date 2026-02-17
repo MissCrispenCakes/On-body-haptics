@@ -33,7 +33,7 @@ The project provides two distinct implementations: an Arduino-based Bluetooth sy
 
 # Statement of Need
 
-Haptic feedback is increasingly recognized as essential for immersive experiences in VR/AR and spatial audio applications [@Choi2013; @Kreimeier2019]. However, existing haptic development platforms are often expensive, closed-source, or require specialized hardware that limits accessibility for researchers and independent developers [@Culbertson2018]. Commercial haptic devices typically cost hundreds to thousands of dollars and offer limited customization options [@Schneider2017].
+Haptic feedback provides essential tactile information for immersive experiences in VR/AR and spatial audio applications. However, existing haptic development platforms are often expensive, closed-source, or require specialized hardware that limits accessibility for researchers and independent developers. Commercial haptic devices typically cost hundreds to thousands of dollars and offer limited customization options.
 
 On-Body Haptics addresses these barriers by providing:
 
@@ -83,9 +83,9 @@ All hardware designs use CERN Open Hardware License (CERN-OHL-P v2), ensuring us
 
 Several commercial and research platforms exist for haptic feedback development, but significant barriers remain for researchers and developers:
 
-**Commercial Platforms**: Systems like Neosensory's Buzz wristband and TactSuit haptic vests offer sophisticated haptic capabilities but typically cost $500-$5000+ and use proprietary closed-source designs [@Schneider2017]. These price points exclude independent researchers, artists, and students. Additionally, commercial systems often require specialized APIs and cannot be modified to support custom hardware configurations or experimental form factors.
+**Commercial Platforms**: Systems like Neosensory's Buzz wristband and TactSuit haptic vests offer sophisticated haptic capabilities but typically cost $500-$5000+ and use proprietary closed-source designs. These price points exclude independent researchers, artists, and students. Additionally, commercial systems often require specialized APIs and cannot be modified to support custom hardware configurations or experimental form factors.
 
-**Research Prototypes**: Academic literature describes numerous wearable haptic systems [@Choi2013; @Kreimeier2019], but publications rarely include manufacturing-ready designs, complete bills of materials, or production firmware. This "reproducibility gap" means other researchers cannot build upon published work without substantial reverse-engineering effort [@Culbertson2018]. The HapticHead system [@Schneider2017], for example, demonstrated effective 3D guidance but did not provide files for community replication.
+**Research Prototypes**: Prior work on wearable haptic systems includes the Ilinx garment [@Giordano2015; @Lamontagne2015], which demonstrated whole-body tactile experiences for multisensory art installations, and Vibropixels [@Hattwick2017], a scalable wireless tactile display system. While these projects advanced the field significantly, publications in academic haptic research often lack manufacturing-ready designs, complete bills of materials, or production firmware that enable direct community replication and extension.
 
 **Open Hardware Projects**: While some open-source haptic projects exist in maker communities, they typically focus on single implementations without providing multiple platform options to serve different research needs. Most lack integration with standard research protocols like Open Sound Control (OSC), limiting their utility in existing laboratory workflows with Max/MSP, TouchDesigner, and other creative coding environments.
 
@@ -109,8 +109,8 @@ The system architecture reflects three key design principles: hardware-software 
 This platform has demonstrated research impact and community adoption through multiple channels:
 
 - **Press Coverage**: Featured in Hackaday (2020) as an exemplar of accessible haptic development for VR applications [@Hackaday2020], reaching an audience of over 500,000 hardware developers and researchers
-- **Research Funding**: Supported by Mitacs Accelerate Grant for "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality" [@Mitacs2023], demonstrating peer-reviewed research significance
-- **Institutional Partnerships**: KDF Entertainment (project sponsor) is an official procurement vendor for York University, enabling direct collaboration with research groups and streamlined equipment acquisition for academic laboratories
+- **Research Funding**: Supported by Mitacs Accelerate Grant for "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality" [@Mitacs2021], demonstrating peer-reviewed research significance
+- **Institutional Partnerships**: KDF Entertainment (established 2009, author's organization for tech/art work) became an official York University procurement vendor, enabling research lab collaborations and equipment supply for academic projects
 - **Sustained Public Development**: Six years of continuous public development (October 2019-present) with transparent version control, demonstrating long-term commitment beyond proof-of-concept prototypes
 - **Community Engagement**: Active GitHub repository with comprehensive issue tracking, pull request workflows, and community contribution guidelines
 
