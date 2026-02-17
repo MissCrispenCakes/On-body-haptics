@@ -4,7 +4,7 @@ All hardware in this directory is licensed under **CERN-OHL-P v2** (CERN Open Ha
 
 See [LICENSE-HARDWARE](../LICENSE-HARDWARE) for full license text.
 
-**OSHWA Certified Ready**: This hardware uses an [OSHWA-approved license](https://oshwa.org/) and meets all requirements for Open Source Hardware certification. See [OSHWA Certification Guide](../docs/OSHWA_CERTIFICATION.md) for details.
+**OSHWA Certified Ready**: This hardware uses an [OSHWA-approved license](https://oshwa.org/) and meets all requirements for Open Source Hardware certification.
 
 ## Contents
 

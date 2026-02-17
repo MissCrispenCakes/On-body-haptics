@@ -230,8 +230,6 @@ All requirements for [Open Source Hardware Association (OSHWA)](https://oshwa.or
 - ✅ Clear documentation and accessibility
 - ✅ Third-party component datasheets included
 
-See [OSHWA Certification Guide](docs/OSHWA_CERTIFICATION.md) for step-by-step instructions to get your official OSHW certification mark and UID.
-
 ## 🙏 Acknowledgments
 
 - **[@rglenn](https://github.com/rglenn)** for:

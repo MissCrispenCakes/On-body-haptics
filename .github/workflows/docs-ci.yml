@@ -80,7 +80,7 @@ jobs:
       - name: Check for broken internal links
         run: |
           # Simple check for broken relative links
-          for file in $(find . -name "*.md"); do
+          for file in $(find . -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*"); do
             echo "Checking $file"
             grep -o '\[.*\](.*\.md)' "$file" | while read link; do
               path=$(echo "$link" | sed 's/.*](\(.*\))/\1/')
