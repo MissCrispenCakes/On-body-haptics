@@ -35,7 +35,14 @@
       "scheme": "url"
     }
   ],
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "rglenn",
+      "type": "Other",
+      "affiliation": "",
+      "note": "Hardware contributor: Raspberry Pi PCB layout design and assembly (2019-2020)"
+    }
+  ],
   "references": [],
   "communities": [
     {

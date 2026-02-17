@@ -18,18 +18,13 @@
 
 ### Hardware Engineering
 
-**rglenn** ([@rglenn](https://github.com/rglenn))
+**rglenn** ([@rglenn](https://github.com/rglenn)) — *Hardware contributor (2019-2020)*
 - **Production PCB designs** - Professional KiCad layouts for manufacturing
 - **Gerber file generation** - Ready-to-fabricate PCB files
 - **3D printed enclosure samples** - Battery-compatible enclosure prototypes (a delightful surprise!)
 - **I2C system implementation** - Ported initial system to I2C architecture for PCB testing
 - **Hardware testing and validation**
 - **Precision assembly work** - Expert soldering for prototype testing (because steady hands and good eyeballs are underrated superpowers when dealing with 0402 components and microscopic traces!)
-
-### Code Contributors
-
-**rglenn** ([@rglenn](https://github.com/rglenn))
-- I2C code implementation and testing for hardware validation
 
 (Additional contributors will be listed here as they make contributions)
 
