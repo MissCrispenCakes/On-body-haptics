@@ -58,11 +58,21 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute.
 
 ## Institutional Affiliations
 
-(Add your institution/organization if applicable)
+**York University, Canada**
+- Dispersion Lab (Prof. Doug Van Nort) - Class project support (2019), contract work (2020)
+- Alice Lab for Computational Worldmaking (Prof. Graham Wakefield) - PhD supervision, lab access, contract work (2024)
+
+**KDF Entertainment**
+- Parent organization for open source tools initiative (established 2009)
+- York University procurement vendor (2024-present)
 
 ## Funding Acknowledgments
 
-This project is supported by community donations and sponsorships.
+This project has been supported by:
+- **Mitacs Accelerate Grant** (2021) - Lab2Market program for "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality"
+- **Dispersion Lab contract** (2020) - Sample set production for performance and research art
+- **Alice Lab contract** (2024) - Haptic system supply through KDF Entertainment vendor partnership
+- **Community sponsorships** - Individual supporters
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-❤-red)](https://github.com/sponsors/MissCrispenCakes)
 
@@ -75,20 +85,22 @@ If you use this project in your research, please consider:
 
 If you use this project in academic work, please cite:
 
-MissCrispenCakes, & rglenn. (2026). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://github.com/MissCrispenCakes/On-body-haptics
+Vollmer, S. C. (2026). On-Body Haptics: Open-Source Wearable Haptic Feedback Systems (Version 2.0.0) [Computer software]. https://doi.org/10.5281/zenodo.18665329
 
 **BibTeX:**
 ```bibtex
-@software{onbodyhaptics2026,
-  author = {MissCrispenCakes and rglenn},
+@software{vollmer2026onbody,
+  author = {Vollmer, S. C.},
   title = {On-Body Haptics: Open-Source Wearable Haptic Feedback Systems},
   version = {2.0.0},
   year = {2026},
+  doi = {10.5281/zenodo.18665329},
   url = {https://github.com/MissCrispenCakes/On-body-haptics}
 }
 ```
 
-Or use the DOI from Zenodo once published (see [ZENODO_SETUP.md](docs/ZENODO_SETUP.md) for instructions).
+**Related Publications:**
+- Vollmer, S. C. (2019). Tactical Tactile Textiles: An exploration in the design of on-body haptics as a means for facilitating collaborative creativity. York University, Computational Arts. https://doi.org/10.13140/RG.2.2.31691.34081
 
 ---
 

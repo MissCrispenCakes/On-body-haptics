@@ -57,3 +57,13 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.18665329
     description: Zenodo archive
+references:
+  - type: report
+    authors:
+      - family-names: Vollmer
+        given-names: SC
+    title: 'Tactical Tactile Textiles: An exploration in the design of on-body haptics as a means for facilitating collaborative creativity'
+    year: 2019
+    institution:
+      name: 'York University, Computational Arts'
+    doi: 10.13140/RG.2.2.31691.34081
