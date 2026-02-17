@@ -16,10 +16,16 @@
       "pattern": "example.com"
     },
     {
-      "pattern": "zenodo.org.*XXXXXXX"
+      "pattern": "zenodo.org"
+    },
+    {
+      "pattern": "doi.org"
     },
     {
       "pattern": "opensoundcontrol.org"
+    },
+    {
+      "pattern": "contributor-covenant.org"
     },
     {
       "pattern": "npmjs.com"
@@ -47,6 +53,39 @@
     },
     {
       "pattern": "amazon.com"
+    },
+    {
+      "pattern": "oshwa.org"
+    },
+    {
+      "pattern": "ohwr.org"
+    },
+    {
+      "pattern": "mitacs.ca"
+    },
+    {
+      "pattern": "yorku.ca"
+    },
+    {
+      "pattern": "hackaday.com"
+    },
+    {
+      "pattern": "kdfentertainment.com"
+    },
+    {
+      "pattern": "keepachangelog.com"
+    },
+    {
+      "pattern": "semver.org"
+    },
+    {
+      "pattern": "pep8.org"
+    },
+    {
+      "pattern": "opensource.org"
+    },
+    {
+      "pattern": "owasp.org"
     }
   ],
   "replacementPatterns": [],
