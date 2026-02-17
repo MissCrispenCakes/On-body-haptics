@@ -131,7 +131,9 @@ Generative AI tools (Claude Code by Anthropic) were used in limited capacity dur
 
 # Acknowledgments
 
-This research was supported by a Mitacs Accelerate Grant for "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality." Research collaboration enabled through KDF Entertainment's partnership with York University as an official procurement vendor.
+The author thanks Prof. Doug Van Nort (York University, Dispersion Lab) for the initial opportunity to develop this work as a custom personal class project (2019) and subsequent contract support for performance and research art applications. The author thanks Prof. Graham Wakefield (York University) for PhD supervision and collaborative support on the Mitacs Accelerate grant application.
+
+This research was supported by a Mitacs Accelerate Grant through the Lab2Market program for "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality." Research collaboration enabled through KDF Entertainment's partnership with York University as an official procurement vendor.
 
 This project builds upon the Adafruit DRV2605L CircuitPython library and the broader open-source hardware and software communities. Special thanks to rglenn for developing the production-ready PCB designs, generating manufacturing-ready Gerber files, creating 3D printed enclosure samples with battery compartments, implementing the I2C system code for hardware testing, and providing expert assembly and soldering work for prototype validation. Thanks to early testers and users who provided valuable feedback during development.
 
