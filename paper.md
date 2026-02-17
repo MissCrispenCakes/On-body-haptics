@@ -131,7 +131,7 @@ AI tools assisted with manuscript editing and formatting to JOSS specifications.
 
 # Acknowledgments
 
-The author thanks Prof. Doug Van Nort (York University, Dispersion Lab) for initial class project support [@Vollmer2019] and subsequent contract work, and Prof. Graham Wakefield (York University) for PhD supervision and collaborative support on the Mitacs Accelerate grant application.
+The author thanks Prof. Doug Van Nort (York University, Dispersion Lab) for initial class project support [@Vollmer2019] and subsequent contract work, and Prof. Graham Wakefield (York University, Alice Lab) for PhD supervision and collaborative support on the Mitacs Accelerate grant application.
 
 This research was supported by a Mitacs Accelerate Grant (Lab2Market program). Research collaboration enabled through KDF Entertainment's partnership with York University.
 
