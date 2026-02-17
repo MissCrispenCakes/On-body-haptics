@@ -127,14 +127,14 @@ The system supports research and creative work across multiple domains:
 
 # AI Usage Disclosure
 
-Generative AI tools (Claude Code by Anthropic) were used in limited capacity during the preparation of this manuscript for the following purposes: restructuring sections to meet updated JOSS 2026 requirements, proofreading for grammar and clarity, and formatting citations. No AI tools were used in the original software development, hardware design, system architecture decisions, or core research contributions. All design decisions, technical implementations, and research framing represent original human work by the authors. The AI assistance was limited to editorial support for this publication submission.
+AI tools assisted with manuscript editing and formatting to JOSS specifications. All technical work is original.
 
 # Acknowledgments
 
-The author thanks Prof. Doug Van Nort (York University, Dispersion Lab) for the initial opportunity to develop this work as a custom personal class project (2019) and subsequent contract support for performance and research art applications. The author thanks Prof. Graham Wakefield (York University) for PhD supervision and collaborative support on the Mitacs Accelerate grant application.
+The author thanks Prof. Doug Van Nort (York University, Dispersion Lab) for initial class project support (2019) and subsequent contract work, and Prof. Graham Wakefield (York University) for PhD supervision and collaborative support on the Mitacs Accelerate grant application.
 
-This research was supported by a Mitacs Accelerate Grant through the Lab2Market program for "Washable Wearables for Affordable and Aesthetic Augmentation of Visuo-Tactile Sensory Perception Enhancement in Mixed Reality." Research collaboration enabled through KDF Entertainment's partnership with York University as an official procurement vendor.
+This research was supported by a Mitacs Accelerate Grant (Lab2Market program). Research collaboration enabled through KDF Entertainment's partnership with York University.
 
-This project builds upon the Adafruit DRV2605L CircuitPython library and the broader open-source hardware and software communities. Special thanks to rglenn for developing the production-ready PCB designs, generating manufacturing-ready Gerber files, creating 3D printed enclosure samples with battery compartments, implementing the I2C system code for hardware testing, and providing expert assembly and soldering work for prototype validation. Thanks to early testers and users who provided valuable feedback during development.
+Special thanks to rglenn for assistance with early version production-ready PCB designs, generating manufacturing-ready Gerber files, and 3D printing, and providing expert assembly and soldering work for prototype validation. This project builds upon the Adafruit open-source libraries and broader hardware community.
 
 # References
