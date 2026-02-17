@@ -121,9 +121,9 @@ This document lists all files that should be reviewed and updated together when 
 - [ ] Update version number if significant changes
 - [ ] `README.md` - Link to SECURITY.md (if adding)
 
-**Contact email locations:**
-- `SECURITY.md` line 172: `workscv@yorku.ca`
-- `CITATION.cff` line 21: `workscv@yorku.ca`
+**Contact methods:**
+- `SECURITY.md`: GitHub Security Advisories (preferred) or obfuscated email
+- Email is NOT in CITATION.cff to prevent scraping
 
 ---
 
