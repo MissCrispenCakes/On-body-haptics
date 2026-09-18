@@ -10,6 +10,8 @@
 
 Transform spatial information into tactile sensations with wearable haptic devices. This project provides complete hardware designs, firmware, and software for building custom haptic feedback systems that respond to OSC (Open Sound Control) messages.
 
+- looking for my individual motor bhaptics-http wrapper? [PyPi](https://pypi.org/project/bhaptics-http/) | [GitHub](https://github.com/MissCrispenCakes/bhaptics-http) 
+
 ## ✨ Features
 
 - **Audio-Reactive by Design**
